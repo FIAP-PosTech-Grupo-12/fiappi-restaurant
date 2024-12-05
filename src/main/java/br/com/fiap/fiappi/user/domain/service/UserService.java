@@ -37,7 +37,7 @@ public class UserService {
 
     public void createUser(CreateUserDto dto) {
 
-        authenticationService.checkIfAuthenticated();
+        //authenticationService.checkIfAuthenticated();
 
         repository.findByEmailOrLogin(dto.email(), dto.login()).ifPresentOrElse(ignored -> {
             throw new IllegalArgumentException("Email or login already in use");
@@ -84,7 +84,7 @@ public class UserService {
 
     public List<UserProjection> findAll(Integer page, Integer size) {
 
-        authenticationService.checkIfAuthenticated();
+        //authenticationService.checkIfAuthenticated();
 
         if (authenticationService.isAuthenticatedUserAdmin())
             return repository.findAllOrLoginNameUser(page, size, null);
@@ -97,7 +97,7 @@ public class UserService {
 
     public UserDetailedProjection findById(UUID id) {
 
-        authenticationService.checkIfAuthenticated();
+        //authenticationService.checkIfAuthenticated();
 
         var user = getAdminOrLoggedUser(id);
 
@@ -107,7 +107,7 @@ public class UserService {
 
     public void updateUser(UUID id, UpdateUserDto dto) {
 
-        authenticationService.checkIfAuthenticated();
+        //authenticationService.checkIfAuthenticated();
 
         var user = getAdminOrLoggedUser(id);
 
@@ -122,7 +122,7 @@ public class UserService {
 
     public void changeUserPassword(UUID id, ChangeUserPasswordDto dto) {
 
-        authenticationService.checkIfAuthenticated();
+        //authenticationService.checkIfAuthenticated();
 
         var user = getAdminOrLoggedUser(id);
 
@@ -135,7 +135,7 @@ public class UserService {
 
     public void deleteUser(UUID id) {
 
-        authenticationService.checkIfAuthenticated();
+        //authenticationService.checkIfAuthenticated();
 
         var user = getAdminOrLoggedUser(id);
 
