@@ -39,28 +39,22 @@ public class UserService {
 
         authenticationService.checkIfAuthenticated();
 
-        if (authenticationService.isAuthenticatedUserAdmin()) {
+        repository.findByEmailOrLogin(dto.email(), dto.login()).ifPresentOrElse(ignored -> {
+            throw new IllegalArgumentException("Email or login already in use");
+        }, () -> {
+            var user = br.com.fiap.fiappi.user.domain.model.User.builder()
+                    .id(UUID.randomUUID())
+                    .name(dto.name())
+                    .email(dto.email())
+                    .login(dto.login())
+                    .password(passwordEncoder.encode(dto.password()))
+                    .updatedDate(LocalDateTime.now())
+                    .role(dto.role())
+                    .address(dto.address())
+                    .build();
 
-            repository.findByEmailOrLogin(dto.email(), dto.login()).ifPresentOrElse(ignored -> {
-                throw new IllegalArgumentException("Email or login already in use");
-            }, () -> {
-                var user = br.com.fiap.fiappi.user.domain.model.User.builder()
-                        .id(UUID.randomUUID())
-                        .name(dto.name())
-                        .email(dto.email())
-                        .login(dto.login())
-                        .password(passwordEncoder.encode(dto.password()))
-                        .updatedDate(LocalDateTime.now())
-                        .role(dto.role())
-                        .address(dto.address())
-                        .build();
-
-                repository.saveAndFlush(user);
-            });
-
-        } else {
-            throw new AuthorizationDeniedException("Is not an administrator", new AuthorizationDecision(false));
-        }
+            repository.saveAndFlush(user);
+        });
 
     }
 
