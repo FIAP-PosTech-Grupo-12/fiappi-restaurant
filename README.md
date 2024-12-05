@@ -59,7 +59,7 @@ A aplicação possui um usuário Master inicial, pois é necessário o login des
 
 A documentação da API pode ser acessada por meio do Swagger UI, gerado automaticamente pelo Springdoc OpenAPI.
 
-- Após inicializar a aplicação, acessar pelo seu navegador a URL: [http://localhost:8080/swagger-ui/index.html.html](http://localhost:8080/swagger-ui/index.html.html)
+- Após inicializar a aplicação, acessar pelo seu navegador a URL: [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
 
 Essa documentação permite explorar e testar todos os endpoints diretamente no navegador.
 
@@ -69,15 +69,15 @@ Alternativamente, pode-se utilizar uma coleção de requisições, na qual é fo
 
 ## Endpoints da API
 
-| Método | Endpoint               | Descrição                                                                         |
-|--------|------------------------|-----------------------------------------------------------------------------------|
-| POST   | `/login`               | Validar login e senha                                                             |
-| POST   | `/users`               | Criação de usuário (Apenas administrador)                                         |
-| GET    | `/users/{id}`          | Buscar todos os usuários (Administrador retorna todos, usuário retorna ele mesmo) |
-| GET    | `/users/{id}`          | Buscar usuário pelo ID (Administrador ou próprio usuário)                         |
-| PATCH  | `/users/{id}`          | Atualizar dados do usuário (Administrador ou próprio usuário)                     |
-| PATCH  | `/users/{id}/password` | Atualizar senha do usuário (Administrador ou próprio usuário)                     |
-| DELETE | `/users/{id}`          | Excluir usuário (Administrador ou próprio usuário)                                |
+| Método | Endpoint                  | Descrição                                                                         |
+|--------|---------------------------|-----------------------------------------------------------------------------------|
+| POST   | `/v1/login`               | Validar login e senha                                                             |
+| POST   | `/v1/users`               | Criação de usuário (Apenas administrador)                                         |
+| GET    | `/v1/users/{id}`          | Buscar todos os usuários (Administrador retorna todos, usuário retorna ele mesmo) |
+| GET    | `/v1/users/{id}`          | Buscar usuário pelo ID (Administrador ou próprio usuário)                         |
+| PATCH  | `/v1/users/{id}`          | Atualizar dados do usuário (Administrador ou próprio usuário)                     |
+| PATCH  | `/v1/users/{id}/password` | Atualizar senha do usuário (Administrador ou próprio usuário)                     |
+| DELETE | `/v1/users/{id}`          | Excluir usuário (Administrador ou próprio usuário)                                |
 
 ---
 
