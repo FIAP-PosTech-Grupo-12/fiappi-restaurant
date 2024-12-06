@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "176b0da3-7b22-4072-bd5f-506d4285f353",
+		"_postman_id": "6fbb22ef-89d5-4511-bf03-af26cd54d020",
 		"name": "FIAPPI",
 		"description": "Coleção de requisições HTTP para a aplicação FIAPPI\n\nEste projeto faz parte do Pós Graduação Tech Arquitetura Java da FIAP",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "40154243"
+		"_exporter_id": "37186886"
 	},
 	"item": [
 		{
@@ -35,13 +35,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://{{host}}:8080/login",
+					"raw": "http://{{host}}:8080/v1/login",
 					"protocol": "http",
 					"host": [
 						"{{host}}"
 					],
 					"port": "8080",
 					"path": [
+						"v1",
 						"login"
 					]
 				}
@@ -80,6 +81,7 @@
 					],
 					"port": "8080",
 					"path": [
+						"v1",
 						"users"
 					]
 				}
@@ -121,6 +123,7 @@
 					],
 					"port": "8080",
 					"path": [
+						"v1",
 						"users"
 					],
 					"query": [
@@ -160,6 +163,7 @@
 					],
 					"port": "8080",
 					"path": [
+						"v1",
 						"users",
 						"{{id}}"
 					]
@@ -199,6 +203,7 @@
 					],
 					"port": "8080",
 					"path": [
+						"v1",
 						"users",
 						"{{id}}"
 					]
@@ -238,6 +243,7 @@
 					],
 					"port": "8080",
 					"path": [
+						"v1",
 						"users",
 						"{{id}}",
 						"password"
@@ -278,6 +284,7 @@
 					],
 					"port": "8080",
 					"path": [
+						"v1",
 						"users",
 						"{{id}}"
 					]
