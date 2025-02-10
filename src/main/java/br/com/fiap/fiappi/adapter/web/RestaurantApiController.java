@@ -18,7 +18,7 @@ import java.util.UUID;
 
 @Slf4j
 @RestController
-@RequestMapping("restaurant")
+@RequestMapping("/v1/restaurant")
 public class RestaurantApiController {
 
     private final RestaurantController restaurantController;

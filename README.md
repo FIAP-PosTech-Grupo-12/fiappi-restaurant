@@ -67,21 +67,20 @@ Alternativamente, pode-se utilizar uma coleção de requisições, na qual é fo
 
 ## Endpoints da API
 
-| Método | Endpoint                  | Descrição                                                                         |
-|--------|---------------------------|-----------------------------------------------------------------------------------|
-| POST   | `/v1/login`               | Validar login e senha                                                             |
-| POST   | `/v1/users`               | Criação de usuário (Apenas administrador)                                         |
-| GET    | `/v1/users/{id}`          | Buscar todos os usuários (Administrador retorna todos, usuário retorna ele mesmo) |
-| GET    | `/v1/users/{id}`          | Buscar usuário pelo ID (Administrador ou próprio usuário)                         |
-| PATCH  | `/v1/users/{id}`          | Atualizar dados do usuário (Administrador ou próprio usuário)                     |
-| PATCH  | `/v1/users/{id}/password` | Atualizar senha do usuário (Administrador ou próprio usuário)                     |
-| DELETE | `/v1/users/{id}`          | Excluir usuário (Administrador ou próprio usuário)                                |
+| Método | Endpoint              | Descrição                                          |
+|--------|-----------------------|----------------------------------------------------|
+| POST   | `/v2/users`           | Atualização tipo de usuário                        |
+| POST   | `/v1/restaurant/{id}` | Cria um restaurante                                |
+| GET    | `/v1/restaurant/{id}` | Buscar restaurante pelo ID                         |
+| GET    | `/v1/restaurant`      | Buscar todos restaurantes                          |
+| DELETE | `/v1/restaurant/{id}` | Exclui restaurante                                 |
+| PATCH  | `/v1/restaurant/`     | Atualizar restaurante                              |
 
 ---
 
 ## Considerações Finais
 
-Este projeto foi desenvolvido com foco nos objetivos propostos pela Fase 1 do Tech Challenge FIAP. A documentação podendo ser utilizada através do Postman e/ou Swagger(OpenAPI) para consulta interativa. Testes unitários, segurança avançada e outras melhorias podem ser adicionadas futuramente conforme a evolução do projeto.
+Este projeto foi desenvolvido com foco nos objetivos propostos pela Fase 2 do Tech Challenge FIAP. A documentação podendo ser utilizada através do Postman e/ou Swagger(OpenAPI) para consulta interativa. Segurança avançada e outras melhorias podem ser adicionadas futuramente conforme a evolução do projeto.
 
 ---
 
