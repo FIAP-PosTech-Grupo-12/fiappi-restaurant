@@ -33,5 +33,7 @@ public class Restaurant {
         this.updatedAt = updatedAt;
     }
 
-
+    public Restaurant(UUID id) {
+        this.id = id;
+    }
 }

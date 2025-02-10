@@ -1,5 +1,6 @@
-package br.com.fiap.fiappi.adapter.database.jpa.restaurant.repository;
+package br.com.fiap.fiappi.adapter.database.jpa.menu.repository;
 
+import br.com.fiap.fiappi.adapter.database.jpa.menu.entity.MenuEntity;
 import br.com.fiap.fiappi.adapter.database.jpa.restaurant.entity.RestauranteEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -7,5 +8,5 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface RestaurantRepository extends JpaRepository<RestauranteEntity, UUID> {
+public interface MenuRepository extends JpaRepository<MenuEntity, UUID> {
 }
