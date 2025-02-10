@@ -1,6 +1,7 @@
 package br.com.fiap.fiappi.core.restaurant.controller;
 
 import br.com.fiap.fiappi.core.restaurant.dto.RestaurantDTO;
+import br.com.fiap.fiappi.core.restaurant.dto.RestaurantMenuDTO;
 import br.com.fiap.fiappi.core.restaurant.usecase.*;
 import br.com.fiap.fiappi.adapter.database.jpa.user.entity.User;
 import lombok.RequiredArgsConstructor;
@@ -24,11 +25,11 @@ public class RestaurantController {
         createRestaurantUseCase.create(restaurantDTO, userRequestId);
     }
 
-    public RestaurantDTO findById(UUID id) {
+    public RestaurantMenuDTO findById(UUID id) {
         return findByIdRestaurantUseCase.findById(id);
     }
 
-    public List<RestaurantDTO> findAll(Pageable pageable) {
+    public List<RestaurantMenuDTO> findAll(Pageable pageable) {
         return findAllRestaurantsUseCase.findAll(pageable);
 
     }

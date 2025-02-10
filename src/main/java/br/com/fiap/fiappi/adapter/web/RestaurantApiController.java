@@ -3,6 +3,7 @@ package br.com.fiap.fiappi.adapter.web;
 import br.com.fiap.fiappi.core.restaurant.controller.RestaurantController;
 import br.com.fiap.fiappi.core.restaurant.dto.RestaurantDTO;
 import br.com.fiap.fiappi.adapter.database.jpa.user.entity.User;
+import br.com.fiap.fiappi.core.restaurant.dto.RestaurantMenuDTO;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
@@ -36,12 +37,12 @@ public class RestaurantApiController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<RestaurantDTO> findById(@PathVariable UUID id) {
+    public ResponseEntity<RestaurantMenuDTO> findById(@PathVariable UUID id) {
         return ResponseEntity.ok(restaurantController.findById(id));
     }
 
     @GetMapping
-    public ResponseEntity<List<RestaurantDTO>> listRestaurants(@PageableDefault(sort = "updatedAt", direction = Sort.Direction.DESC) Pageable pageable) {
+    public ResponseEntity<List<RestaurantMenuDTO>> listRestaurants(@PageableDefault(sort = "updatedAt", direction = Sort.Direction.DESC) Pageable pageable) {
         return ResponseEntity.ok(restaurantController.findAll(pageable));
     }
 

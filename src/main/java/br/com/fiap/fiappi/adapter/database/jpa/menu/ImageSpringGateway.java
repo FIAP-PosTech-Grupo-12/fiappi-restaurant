@@ -22,7 +22,6 @@ public class ImageSpringGateway implements ImageGateway {
 
         Path path = Paths.get("src/main/resources" + nameWithUUID);
 
-        // Cria o diretório se não existir
         try {
             Files.createDirectories(path.getParent());
         } catch (IOException e) {

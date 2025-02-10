@@ -2,6 +2,8 @@ package br.com.fiap.fiappi.adapter.database.jpa.menu.entity;
 
 import br.com.fiap.fiappi.adapter.database.jpa.restaurant.entity.RestauranteEntity;
 import br.com.fiap.fiappi.core.restaurant.domain.Restaurant;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -10,7 +12,6 @@ import java.util.UUID;
 
 @Entity
 @Table(name="menu_items")
-@Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,7 +20,9 @@ public class MenuEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
+    @ToString.Exclude
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "restaurant_id")
     private RestauranteEntity restaurant;
 
@@ -50,7 +53,6 @@ public class MenuEntity {
     @Column
     private LocalDateTime updatedAt;
 
-
     public MenuEntity(RestauranteEntity restaurant, String name, String description, Double price, Boolean availableInRestaurantOnly, String photoPath, UUID creatorId, LocalDateTime createdAt, UUID updatedBy, LocalDateTime updatedAt) {
         this.restaurant = restaurant;
         this.name = name;
@@ -63,4 +65,5 @@ public class MenuEntity {
         this.updatedBy = updatedBy;
         this.updatedAt = updatedAt;
     }
+
 }

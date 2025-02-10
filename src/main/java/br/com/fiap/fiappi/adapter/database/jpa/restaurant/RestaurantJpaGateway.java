@@ -2,8 +2,10 @@ package br.com.fiap.fiappi.adapter.database.jpa.restaurant;
 
 import br.com.fiap.fiappi.adapter.database.jpa.restaurant.entity.RestauranteEntity;
 import br.com.fiap.fiappi.adapter.database.jpa.restaurant.repository.RestaurantRepository;
+import br.com.fiap.fiappi.core.menu.dto.MenuDTO;
 import br.com.fiap.fiappi.core.restaurant.domain.Restaurant;
 import br.com.fiap.fiappi.core.restaurant.dto.RestaurantDTO;
+import br.com.fiap.fiappi.core.restaurant.dto.RestaurantMenuDTO;
 import br.com.fiap.fiappi.core.restaurant.exception.RestaurantNotFoundException;
 import br.com.fiap.fiappi.core.restaurant.gateway.RestauranteGateway;
 import jakarta.transaction.Transactional;
@@ -42,31 +44,50 @@ public class RestaurantJpaGateway implements RestauranteGateway {
     }
 
     @Override
-    public RestaurantDTO findBy(UUID id) {
+    public RestaurantMenuDTO findBy(UUID id) {
         RestauranteEntity restaurant = restaurantRepository.findById(id).orElseThrow(() -> new RestaurantNotFoundException("Restaurant not found"));
 
-        return new RestaurantDTO(
+        return new RestaurantMenuDTO(
                 restaurant.getId(),
                 restaurant.getName(),
                 restaurant.getAddress(),
                 restaurant.getKitchenType(),
                 restaurant.getOpeningHours(),
-                restaurant.getOwnerId()
+                restaurant.getOwnerId(),
+                restaurant.getMenus().stream()
+                        .map(m -> new MenuDTO(
+                                restaurant.getId(),
+                                m.getName(),
+                                m.getDescription(),
+                                m.getPrice(),
+                                m.getAvailableInRestaurantOnly()
+                        ))
+                        .toList()
         );
     }
 
     @Override
-    public List<RestaurantDTO> findAll(Pageable pageable) {
+    public List<RestaurantMenuDTO> findAll(Pageable pageable) {
 
         Page<RestauranteEntity> restaurants = restaurantRepository.findAll(pageable);
 
+
         return restaurants.stream()
-                .map(r -> new RestaurantDTO(r.getId(),
+                .map(r -> new RestaurantMenuDTO(r.getId(),
                         r.getName(),
                         r.getAddress(),
                         r.getKitchenType(),
                         r.getOpeningHours(),
-                        r.getOwnerId()))
+                        r.getOwnerId(),
+                        r.getMenus().stream()
+                                .map(m -> new MenuDTO(
+                                                r.getId(),
+                                                m.getName(),
+                                                m.getDescription(),
+                                                m.getPrice(),
+                                                m.getAvailableInRestaurantOnly()
+                                ))
+                                .toList()))
                 .toList();
 
     }

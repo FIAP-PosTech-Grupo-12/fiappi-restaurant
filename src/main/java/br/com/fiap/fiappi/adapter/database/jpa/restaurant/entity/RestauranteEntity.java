@@ -6,12 +6,12 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 @Entity
 @Table(name="restaurants")
-@Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -50,7 +50,7 @@ public class RestauranteEntity {
     private LocalDateTime updatedAt;
 
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
-    private List<MenuEntity> menus;
+    private List<MenuEntity> menus = new ArrayList<>();
 
     public RestauranteEntity(String name, String address, KitchenTypeEnum kitchenType, String openingHours, UUID ownerId, UUID creatorId, LocalDateTime createdAt, UUID updatedBy, LocalDateTime updatedAt) {
         this.name = name;
@@ -64,6 +64,10 @@ public class RestauranteEntity {
         this.updatedAt = updatedAt;
     }
 
+    public RestauranteEntity(UUID id) {
+        this.id = id;
+    }
+
     public RestauranteEntity(UUID id, String name, String address, KitchenTypeEnum kitchenType, String openingHours, UUID ownerId, UUID creatorId, LocalDateTime createdAt, UUID updatedBy, LocalDateTime updatedAt) {
         this.id = id;
         this.name = name;
@@ -75,9 +79,5 @@ public class RestauranteEntity {
         this.createdAt = createdAt;
         this.updatedBy = updatedBy;
         this.updatedAt = updatedAt;
-    }
-
-    public RestauranteEntity(UUID id) {
-        this.id = id;
     }
 }

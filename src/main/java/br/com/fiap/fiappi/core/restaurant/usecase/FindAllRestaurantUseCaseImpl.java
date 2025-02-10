@@ -1,6 +1,7 @@
 package br.com.fiap.fiappi.core.restaurant.usecase;
 
 import br.com.fiap.fiappi.core.restaurant.dto.RestaurantDTO;
+import br.com.fiap.fiappi.core.restaurant.dto.RestaurantMenuDTO;
 import br.com.fiap.fiappi.core.restaurant.gateway.RestauranteGateway;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +19,7 @@ public class FindAllRestaurantUseCaseImpl implements FindAllRestaurantUseCase{
 
 
     @Override
-    public List<RestaurantDTO> findAll(Pageable pageable) {
+    public List<RestaurantMenuDTO> findAll(Pageable pageable) {
         return restauranteGateway.findAll(pageable);
     }
 }
