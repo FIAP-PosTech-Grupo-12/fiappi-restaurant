@@ -19,7 +19,7 @@ public class OpenApiConfig {
         return new OpenAPI().info(
                         new Info().title("FIAPPI")
                                 .description("Projeto Restaurante FIAP Tech Challenge Fase 1")
-                                .version("v0.0.1")
+                                .version("v0.0.2")
                                 .license(new License().name("FIAP Pós Tech").url("https://github.com/FIAP-PosTech-Grupo-12/fiappi"))
                 ).addSecurityItem(new SecurityRequirement().
                         addList("Bearer Authentication"))

@@ -1,7 +1,7 @@
 package br.com.fiap.fiappi.config.security.filters;
 
+import br.com.fiap.fiappi.adapter.database.jpa.user.repository.UserRepository;
 import br.com.fiap.fiappi.config.security.providers.JwtProvider;
-import br.com.fiap.fiappi.user.domain.model.UserRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -36,10 +36,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         if (decodedJWT != null && Instant.now().isBefore(decodedJWT.getExpiresAtAsInstant())) {
             userRepository.findByLogin(decodedJWT.getSubject()).ifPresent(user -> {
-                var authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
+                var authentication = new UsernamePasswordAuthenticationToken(decodedJWT.getSubject(), null, user.getAuthorities());
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             });
-
         }
 
         filterChain.doFilter(request, response);

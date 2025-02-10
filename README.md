@@ -8,11 +8,9 @@ Este projeto faz parte do Pós Graduação Tech Arquitetura Java da [FIAP](https
 
 ## Funcionalidades
 
-- Registrar novos usuários com dados como nome, email, login, senha e endereço.
-- Modificar informações cadastradas dos usuários.
-- Excluir permanentemente um usuário do sistema.
-- Validar login, verificando se login e senha são válidos, retornando o token para uso da API.
-- Atualizar a senha do usuário.
+- Atualizar tipo de usuario.
+- Adicionar, atualizar, remover, recuperar restaurantes.
+- Adicionar, atualizar, remover, recuperar menus.
 
 ---
 
@@ -39,8 +37,8 @@ Este projeto faz parte do Pós Graduação Tech Arquitetura Java da [FIAP](https
 1. Clone o repositório:
 
    ```bash
-   git clone https://github.com/FIAP-PosTech-Grupo-12/fiappi.git
-   cd fiappi
+   git clone https://github.com/FIAP-PosTech-Grupo-12/fiappi-restaurant.git
+   cd fiappi-restaurant
    ```
 
 2. Suba o ambiente com Docker Compose:

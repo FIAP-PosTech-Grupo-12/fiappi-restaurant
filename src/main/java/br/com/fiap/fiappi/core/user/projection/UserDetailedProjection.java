@@ -1,4 +1,4 @@
-package br.com.fiap.fiappi.user.adapter.api.projection;
+package br.com.fiap.fiappi.core.user.projection;
 
 public interface UserDetailedProjection extends UserProjection {
 

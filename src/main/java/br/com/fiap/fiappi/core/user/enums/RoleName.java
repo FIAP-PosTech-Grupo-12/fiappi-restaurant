@@ -1,4 +1,4 @@
-package br.com.fiap.fiappi.user.domain.enums;
+package br.com.fiap.fiappi.core.user.enums;
 
 public enum RoleName {
 

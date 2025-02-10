@@ -1,6 +1,6 @@
 package br.com.fiap.fiappi.config.security.service;
 
-import br.com.fiap.fiappi.user.domain.enums.RoleName;
+import br.com.fiap.fiappi.core.user.enums.RoleName;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;

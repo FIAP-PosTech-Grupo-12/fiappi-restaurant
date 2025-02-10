@@ -1,4 +1,4 @@
-package br.com.fiap.fiappi.core.menu.dto;
+package br.com.fiap.fiappi.core.menu;
 
 import java.math.BigDecimal;
 

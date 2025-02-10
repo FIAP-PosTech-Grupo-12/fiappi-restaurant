@@ -10,6 +10,9 @@ public record RestaurantDTO(
         String address,
         KitchenTypeEnum kitchenType,
         String openingHours,
-        UUID ownerId
+        UUID ownerId,
+        UUID creatorId,
+        UUID updatedById
+
 ) {
 }

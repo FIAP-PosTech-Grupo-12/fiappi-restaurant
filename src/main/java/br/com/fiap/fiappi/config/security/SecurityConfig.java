@@ -1,7 +1,6 @@
 package br.com.fiap.fiappi.config.security;
 
 import br.com.fiap.fiappi.config.security.filters.JwtAuthenticationFilter;
-import br.com.fiap.fiappi.user.domain.enums.RoleName;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

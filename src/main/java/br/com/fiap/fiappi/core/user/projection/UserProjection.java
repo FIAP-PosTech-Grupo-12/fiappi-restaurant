@@ -1,6 +1,7 @@
-package br.com.fiap.fiappi.user.adapter.api.projection;
+package br.com.fiap.fiappi.core.user.projection;
 
-import br.com.fiap.fiappi.user.domain.enums.RoleName;
+
+import br.com.fiap.fiappi.core.user.enums.RoleName;
 
 import java.util.UUID;
 

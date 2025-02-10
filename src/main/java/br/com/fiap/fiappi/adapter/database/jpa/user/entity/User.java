@@ -1,6 +1,7 @@
-package br.com.fiap.fiappi.user.domain.model;
+package br.com.fiap.fiappi.adapter.database.jpa.user.entity;
 
-import br.com.fiap.fiappi.user.domain.enums.RoleName;
+
+import br.com.fiap.fiappi.core.user.enums.RoleName;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
