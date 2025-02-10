@@ -1,6 +1,7 @@
 package br.com.fiap.fiappi.adapter.database.jpa.menu;
 
 import br.com.fiap.fiappi.core.menu.gateway.ImageGateway;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -36,5 +37,18 @@ public class ImageSpringGateway implements ImageGateway {
         }
 
         return nameWithUUID;
+    }
+
+    @Override
+    @Transactional
+    public void deleteByPath(String path) {
+
+        Path pathWithName = Paths.get("src/main/resources" + path);
+
+        try {
+            Files.delete(pathWithName);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

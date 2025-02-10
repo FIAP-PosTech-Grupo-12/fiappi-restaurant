@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.UUID;
 
 @Slf4j
 @RestController
@@ -39,6 +40,12 @@ public class MenuApiController {
         menuController.create(bytes, dto, userRequest.getId());
         return ResponseEntity.status(HttpStatus.CREATED).build();
 
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable UUID id) {
+        menuController.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
 
