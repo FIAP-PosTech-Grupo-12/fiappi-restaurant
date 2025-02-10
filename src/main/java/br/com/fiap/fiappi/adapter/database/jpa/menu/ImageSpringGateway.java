@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 @Service
@@ -50,5 +52,28 @@ public class ImageSpringGateway implements ImageGateway {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public Map<UUID, byte[]> findBytesByPaths(Map<UUID, String> mapIdByPhotoPath) {
+
+        Map<UUID, byte[]> mapIdByBytes = new HashMap();
+
+        mapIdByPhotoPath.forEach((id, photoPath) ->{
+            Path pathWithName = Paths.get("src/main/resources" + photoPath);
+
+            byte[] bytes;
+            try {
+                bytes = Files.readAllBytes(pathWithName);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            mapIdByBytes.put(id, bytes);
+
+        });
+
+
+        return mapIdByBytes;
     }
 }
