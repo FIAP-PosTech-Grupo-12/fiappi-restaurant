@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -18,12 +19,12 @@ public class CreateRestaurantUseCaseImpl implements CreateRestaurantUseCase{
     private final RestauranteGateway restauranteGateway;
 
     @Override
-    public void create(RestaurantDTO restaurantDTO, User userRequest) {
+    public void create(RestaurantDTO restaurantDTO, UUID userRequestId) {
 
         Restaurant restaurante = new Restaurant(restaurantDTO.name(),
                 restaurantDTO.address(), restaurantDTO.kitchenType(),
-                restaurantDTO.openingHours(), restaurantDTO.ownerId(), userRequest.getId(),
-                LocalDateTime.now(), userRequest.getId(), LocalDateTime.now());
+                restaurantDTO.openingHours(), restaurantDTO.ownerId(), userRequestId,
+                LocalDateTime.now(), userRequestId, LocalDateTime.now());
 
         restauranteGateway.create(restaurante);
 

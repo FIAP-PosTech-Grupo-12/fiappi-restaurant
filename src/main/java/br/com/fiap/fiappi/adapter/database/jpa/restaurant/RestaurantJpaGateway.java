@@ -75,4 +75,23 @@ public class RestaurantJpaGateway implements RestauranteGateway {
     public void delete(UUID id) {
         restaurantRepository.deleteById(id);
     }
+
+    @Override
+    public void update(Restaurant restaurante) {
+        RestauranteEntity restauranteEntity = new RestauranteEntity(
+                restaurante.getId(),
+                restaurante.getName(),
+                restaurante.getAddress(),
+                restaurante.getKitchenType(),
+                restaurante.getOpeningHours(),
+                restaurante.getOwnerId(),
+                restaurante.getCreatorId(),
+                restaurante.getCreatedAt(),
+                restaurante.getUpdatedBy(),
+                restaurante.getUpdatedAt()
+        );
+
+        restaurantRepository.save(restauranteEntity);
+
+    }
 }

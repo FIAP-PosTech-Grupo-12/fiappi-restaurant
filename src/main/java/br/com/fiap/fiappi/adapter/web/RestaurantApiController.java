@@ -30,7 +30,7 @@ public class RestaurantApiController {
     @PostMapping
     public ResponseEntity<Void> create(@Valid @RequestBody RestaurantDTO restaurantDTO,
                                        @AuthenticationPrincipal User userRequest) {
-        restaurantController.create(restaurantDTO, userRequest);
+        restaurantController.create(restaurantDTO, userRequest.getId());
         return ResponseEntity.status(HttpStatus.CREATED).build();
 
     }
@@ -46,9 +46,16 @@ public class RestaurantApiController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable UUID id) {
-        restaurantController.deleteUser(id);
+    public ResponseEntity<Void> deleteRestaurant(@PathVariable UUID id) {
+        restaurantController.deleteRestaurant(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping()
+    public ResponseEntity<Void> updateRestaurant(@RequestBody RestaurantDTO dto,
+                                                 @AuthenticationPrincipal User userRequest) {
+        restaurantController.updateRestaurant(dto, userRequest.getId());
+        return ResponseEntity.ok().build();
     }
 
 }

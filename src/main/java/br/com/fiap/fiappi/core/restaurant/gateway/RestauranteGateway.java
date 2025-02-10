@@ -15,4 +15,6 @@ public interface RestauranteGateway {
     List<RestaurantDTO> findAll(Pageable pageable);
 
     void delete(UUID id);
+
+    void update(Restaurant restaurante);
 }
