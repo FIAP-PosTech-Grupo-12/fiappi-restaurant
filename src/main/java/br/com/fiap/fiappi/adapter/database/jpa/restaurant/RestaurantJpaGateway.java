@@ -51,10 +51,8 @@ public class RestaurantJpaGateway implements RestauranteGateway {
                 restaurant.getAddress(),
                 restaurant.getKitchenType(),
                 restaurant.getOpeningHours(),
-                restaurant.getOwnerId(),
-                restaurant.getCreatorId(),
-                restaurant.getUpdatedBy())
-        ;
+                restaurant.getOwnerId()
+        );
     }
 
     @Override
@@ -68,9 +66,7 @@ public class RestaurantJpaGateway implements RestauranteGateway {
                         r.getAddress(),
                         r.getKitchenType(),
                         r.getOpeningHours(),
-                        r.getOwnerId(),
-                        r.getCreatorId(),
-                        r.getUpdatedBy()))
+                        r.getOwnerId()))
                 .toList();
 
     }

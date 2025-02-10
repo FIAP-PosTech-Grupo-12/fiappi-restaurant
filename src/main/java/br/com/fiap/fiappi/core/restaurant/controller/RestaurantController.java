@@ -28,8 +28,8 @@ public class RestaurantController {
         this.deleteRestaurantUseCase = deleteRestaurantUseCase;
     }
 
-    public void create(RestaurantDTO restaurantDTO) {
-        createRestaurantUseCase.create(restaurantDTO);
+    public void create(RestaurantDTO restaurantDTO, User userRequest) {
+        createRestaurantUseCase.create(restaurantDTO, userRequest);
     }
 
     public RestaurantDTO findById(UUID id) {

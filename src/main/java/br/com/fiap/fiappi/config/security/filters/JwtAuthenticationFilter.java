@@ -36,9 +36,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         if (decodedJWT != null && Instant.now().isBefore(decodedJWT.getExpiresAtAsInstant())) {
             userRepository.findByLogin(decodedJWT.getSubject()).ifPresent(user -> {
-                var authentication = new UsernamePasswordAuthenticationToken(decodedJWT.getSubject(), null, user.getAuthorities());
+                var authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             });
+
         }
 
         filterChain.doFilter(request, response);

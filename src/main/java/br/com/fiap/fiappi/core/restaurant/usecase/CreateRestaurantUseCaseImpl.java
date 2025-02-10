@@ -18,12 +18,12 @@ public class CreateRestaurantUseCaseImpl implements CreateRestaurantUseCase{
     private final RestauranteGateway restauranteGateway;
 
     @Override
-    public void create(RestaurantDTO restaurantDTO) {
+    public void create(RestaurantDTO restaurantDTO, User userRequest) {
 
         Restaurant restaurante = new Restaurant(restaurantDTO.name(),
                 restaurantDTO.address(), restaurantDTO.kitchenType(),
-                restaurantDTO.openingHours(), restaurantDTO.ownerId(), restaurantDTO.creatorId(),
-                LocalDateTime.now(), restaurantDTO.updatedById(), LocalDateTime.now());
+                restaurantDTO.openingHours(), restaurantDTO.ownerId(), userRequest.getId(),
+                LocalDateTime.now(), userRequest.getId(), LocalDateTime.now());
 
         restauranteGateway.create(restaurante);
 

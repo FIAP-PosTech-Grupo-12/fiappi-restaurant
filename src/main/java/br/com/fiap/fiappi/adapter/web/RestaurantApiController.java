@@ -10,6 +10,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,8 +28,9 @@ public class RestaurantApiController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> create(@Valid @RequestBody RestaurantDTO restaurantDTO) {
-        restaurantController.create(restaurantDTO);
+    public ResponseEntity<Void> create(@Valid @RequestBody RestaurantDTO restaurantDTO,
+                                       @AuthenticationPrincipal User userRequest) {
+        restaurantController.create(restaurantDTO, userRequest);
         return ResponseEntity.status(HttpStatus.CREATED).build();
 
     }
