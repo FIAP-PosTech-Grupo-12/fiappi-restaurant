@@ -63,7 +63,6 @@ public class MenuJpaGateway implements MenuGateway {
     @Override
     public Map<MenuDTO, String> findByIdRestaurant(UUID idRestaurant) {
 
-//        List<MenuEntity> menusEntity = menuRepository.findByRestaurant_Id(idRestaurant);
         Map<MenuEntity, String> mapMenusEntityByPhotoPath = menuRepository.findByRestaurant_Id(idRestaurant).
                 stream().collect(Collectors.toMap(Function.identity(), MenuEntity::getPhotoPath));
 
@@ -79,5 +78,23 @@ public class MenuJpaGateway implements MenuGateway {
         });
 
         return mapMenusDTOByPhotoPath;
+    }
+
+    @Override
+    public void update(Menu menu) {
+        MenuEntity menuEntity = new MenuEntity(
+                menu.getId(),
+                new RestauranteEntity(menu.getRestaurant().getId()),
+                menu.getName(),
+                menu.getDescription(),
+                menu.getPrice(),
+                menu.getAvailableInRestaurantOnly(),
+                menu.getPhotoPath(),
+                menu.getCreatorId(),
+                menu.getCreatedAt(),
+                menu.getUpdatedBy(),
+                menu.getUpdatedAt());
+
+        menuRepository.save(menuEntity);
     }
 }

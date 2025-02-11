@@ -4,6 +4,7 @@ import br.com.fiap.fiappi.core.menu.dto.MenuDTO;
 import br.com.fiap.fiappi.core.menu.usecase.CreateMenuUseCase;
 import br.com.fiap.fiappi.core.menu.usecase.DeleteMenuUseCase;
 import br.com.fiap.fiappi.core.menu.usecase.FindMenuByIdRestaurantUseCase;
+import br.com.fiap.fiappi.core.menu.usecase.UpdateMenuUseCase;
 import br.com.fiap.fiappi.core.restaurant.dto.RestaurantDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -20,6 +21,7 @@ public class MenuController {
     private final CreateMenuUseCase createMenuUseCase;
     private final DeleteMenuUseCase deleteMenuUseCase;
     private final FindMenuByIdRestaurantUseCase findMenuByIdRestaurantUseCase;
+    private final UpdateMenuUseCase updateMenuUseCase;
 
 
     public void create(byte[] bytes, String dto, UUID userRequestId) {
@@ -34,5 +36,9 @@ public class MenuController {
 
     public Set<MenuDTO> findByIdRestaurant(UUID idRestaurant) {
         return findMenuByIdRestaurantUseCase.findByIdRestaurant(idRestaurant);
+    }
+
+    public void updateMenu(MenuDTO dto, UUID userRequestId) {
+        updateMenuUseCase.update(dto, userRequestId);
     }
 }

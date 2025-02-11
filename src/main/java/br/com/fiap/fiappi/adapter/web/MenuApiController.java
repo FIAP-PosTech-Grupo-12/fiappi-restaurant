@@ -3,9 +3,6 @@ package br.com.fiap.fiappi.adapter.web;
 import br.com.fiap.fiappi.adapter.database.jpa.user.entity.User;
 import br.com.fiap.fiappi.core.menu.controller.MenuController;
 import br.com.fiap.fiappi.core.menu.dto.MenuDTO;
-import br.com.fiap.fiappi.core.restaurant.dto.RestaurantDTO;
-import br.com.fiap.fiappi.core.restaurant.dto.RestaurantMenuDTO;
-import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -55,6 +51,13 @@ public class MenuApiController {
     @GetMapping("/{idRestaurant}")
     public ResponseEntity<Set<MenuDTO>> findByIdRestaurant(@PathVariable UUID idRestaurant) {
         return ResponseEntity.ok(menuController.findByIdRestaurant(idRestaurant));
+    }
+
+    @PatchMapping()
+    public ResponseEntity<Void> updateMenu(@RequestBody MenuDTO dto,
+                                           @AuthenticationPrincipal User userRequest) {
+        menuController.updateMenu(dto, userRequest.getId());
+        return ResponseEntity.ok().build();
     }
 
 }

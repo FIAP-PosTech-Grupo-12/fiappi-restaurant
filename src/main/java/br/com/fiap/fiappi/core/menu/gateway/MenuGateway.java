@@ -16,4 +16,5 @@ public interface MenuGateway {
 
     Map<MenuDTO, String> findByIdRestaurant(UUID idRestaurant);
 
+    void update(Menu menu);
 }
