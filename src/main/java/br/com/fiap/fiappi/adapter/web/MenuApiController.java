@@ -3,6 +3,7 @@ package br.com.fiap.fiappi.adapter.web;
 import br.com.fiap.fiappi.adapter.database.jpa.user.entity.User;
 import br.com.fiap.fiappi.core.menu.controller.MenuController;
 import br.com.fiap.fiappi.core.menu.dto.MenuDTO;
+import br.com.fiap.fiappi.core.menu.exception.MenuConverterException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +35,7 @@ public class MenuApiController {
         try {
             bytes = file.getBytes();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new MenuConverterException("Error to get bytes");
         }
 
         menuController.create(bytes, dto, userRequest.getId());

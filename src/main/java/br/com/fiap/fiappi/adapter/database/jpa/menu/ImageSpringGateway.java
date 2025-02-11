@@ -1,5 +1,6 @@
 package br.com.fiap.fiappi.adapter.database.jpa.menu;
 
+import br.com.fiap.fiappi.core.menu.exception.ImageConverterException;
 import br.com.fiap.fiappi.core.menu.gateway.ImageGateway;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -28,14 +29,13 @@ public class ImageSpringGateway implements ImageGateway {
         try {
             Files.createDirectories(path.getParent());
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new ImageConverterException("Error to create directory");
         }
 
-        // Escreve o arquivo na pasta
         try {
             Files.write(path, bytes);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new ImageConverterException("Error to create image");
         }
 
         return nameWithUUID;
@@ -50,7 +50,7 @@ public class ImageSpringGateway implements ImageGateway {
         try {
             Files.delete(pathWithName);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new ImageConverterException("Error to delete image");
         }
     }
 
@@ -66,7 +66,7 @@ public class ImageSpringGateway implements ImageGateway {
             try {
                 bytes = Files.readAllBytes(pathWithName);
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                throw new ImageConverterException("Error to read image");
             }
 
             mapIdByBytes.put(id, bytes);
