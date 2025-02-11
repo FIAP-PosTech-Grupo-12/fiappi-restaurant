@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>br.com.fiap</groupId>
-    <artifactId>fiappi</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>fiappi</name>
+    <artifactId>fiappi-restaurant</artifactId>
+    <version>0.0.2-SNAPSHOT</version>
+    <name>fiappi-restaurant</name>
     <description>Aplicação para Restaurantes</description>
     <url>https://www.fiap.com.br</url>
 

@@ -1,7 +1,5 @@
 package br.com.fiap.fiappi.core.restaurant.usecase;
 
-import br.com.fiap.fiappi.core.restaurant.dto.RestaurantDTO;
-import br.com.fiap.fiappi.core.restaurant.enums.KitchenTypeEnum;
 import br.com.fiap.fiappi.core.restaurant.gateway.RestauranteGateway;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -30,7 +28,7 @@ public class DeleteRestaurantUseCaseTest {
     }
 
     @Test
-    void shouldCreateRestaurant(){
+    void shouldDeleteRestaurant(){
 
         delete.delete(UUID.randomUUID());
 

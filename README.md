@@ -45,7 +45,7 @@ Este projeto faz parte do Pós Graduação Tech Arquitetura Java da [FIAP](https
 2. Suba o ambiente com Docker Compose:
 
    ```bash
-   docker-compose up --build
+   docker compose -p fiappi-restaurant up --build
    ```
 
 ---

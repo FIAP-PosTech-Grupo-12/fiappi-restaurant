@@ -27,7 +27,7 @@ public class FindAllRestaurantUseCaseTest {
     }
 
     @Test
-    void shouldCreateRestaurant(){
+    void shouldFindAllRestaurants(){
         Pageable pageable = null;
 
         findAll.findAll(pageable);

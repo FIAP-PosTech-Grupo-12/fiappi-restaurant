@@ -1,5 +1,7 @@
 package br.com.fiap.fiappi.core.restaurant.usecase;
 
+import br.com.fiap.fiappi.core.restaurant.dto.RestaurantDTO;
+import br.com.fiap.fiappi.core.restaurant.enums.KitchenTypeEnum;
 import br.com.fiap.fiappi.core.restaurant.gateway.RestauranteGateway;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,10 +15,10 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-public class FindByIdRestaurantUseCaseTest {
+public class UpdateRestaurantUseCaseTest {
 
     @InjectMocks
-    FindByIdRestaurantUseCaseImpl findById;
+    UpdateRestaurantUseCaseImpl updateRestaurant;
 
     @Mock
     RestauranteGateway restauranteGateway;
@@ -28,11 +30,18 @@ public class FindByIdRestaurantUseCaseTest {
     }
 
     @Test
-    void shouldFindRestaurantById(){
+    void shouldUpdateRestaurant(){
 
-        findById.findById(UUID.randomUUID());
+        RestaurantDTO restaurantDTO = new RestaurantDTO(UUID.randomUUID(),
+                "Name",
+                "Address",
+                KitchenTypeEnum.FAST_FOOD,
+                "7-22",
+                UUID.randomUUID());
 
-        verify(restauranteGateway, times(1)).findBy(any());
+        updateRestaurant.update(restaurantDTO, UUID.randomUUID());
+
+        verify(restauranteGateway, times(1)).update(any());
 
     }
 

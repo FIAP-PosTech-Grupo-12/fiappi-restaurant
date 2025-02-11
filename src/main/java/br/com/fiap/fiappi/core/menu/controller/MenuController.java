@@ -34,7 +34,7 @@ public class MenuController {
         deleteMenuUseCase.delete(id);
     }
 
-    public Set<MenuDTO> findByIdRestaurant(UUID idRestaurant) {
+    public List<MenuDTO> findByIdRestaurant(UUID idRestaurant) {
         return findMenuByIdRestaurantUseCase.findByIdRestaurant(idRestaurant);
     }
 

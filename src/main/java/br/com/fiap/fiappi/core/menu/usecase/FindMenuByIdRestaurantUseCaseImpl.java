@@ -20,20 +20,20 @@ public class FindMenuByIdRestaurantUseCaseImpl implements FindMenuByIdRestaurant
 
 
     @Override
-    public Set<MenuDTO> findByIdRestaurant(UUID idRestaurant) {
+    public List<MenuDTO> findByIdRestaurant(UUID idRestaurant) {
 
-        Map<MenuDTO, String> dtos = menuGateway.findByIdRestaurant(idRestaurant);
+        Map<MenuDTO, String> mapMenusDTOByPhotoPath = menuGateway.findByIdRestaurant(idRestaurant);
 
-        Map<UUID, String> uuidMap = dtos.entrySet().stream()
+        Map<UUID, String> mapIdByPath = mapMenusDTOByPhotoPath.entrySet().stream()
                 .collect(Collectors.toMap(entry -> entry.getKey().getMenuId(), Map.Entry::getValue));
 
-        Map<UUID, byte[]> mapMenuIdByBytesPhoto = imageGateway.findBytesByPaths(uuidMap);
+        Map<UUID, byte[]> mapMenuIdByBytesPhoto = imageGateway.findBytesByPaths(mapIdByPath);
 
-        dtos.forEach((menuDTO, photoPath) -> {
+        mapMenusDTOByPhotoPath.forEach((menuDTO, photoPath) -> {
             menuDTO.setBytes(mapMenuIdByBytesPhoto.get(menuDTO.getMenuId()));
 
         });
 
-        return dtos.keySet();
+        return mapMenusDTOByPhotoPath.keySet().stream().toList();
     }
 }

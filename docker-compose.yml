@@ -18,9 +18,9 @@ services:
   postgresql:
     image: postgres:15-alpine
     ports:
-      - "5432:5432"
+      - "5434:5432"  # Mudei para a porta 5434 na máquina local
     environment:
-      - POSTGRES_DB:fiappi
+      - POSTGRES_DB=fiappi
       - POSTGRES_USER=fiappi
       - POSTGRES_PASSWORD=fiappi
     volumes:
