@@ -57,7 +57,7 @@ A aplicação possui um usuário Master inicial, pois é necessário o login des
 
 A documentação da API pode ser acessada por meio do Swagger UI, gerado automaticamente pelo Springdoc OpenAPI.
 
-- Após inicializar a aplicação, acessar pelo seu navegador a URL: [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
+- Após inicializar a aplicação, acessar pelo seu navegador a URL: [http://localhost:8081/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
 
 Essa documentação permite explorar e testar todos os endpoints diretamente no navegador.
 
