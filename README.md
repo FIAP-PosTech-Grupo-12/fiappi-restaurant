@@ -67,14 +67,19 @@ Alternativamente, pode-se utilizar uma coleção de requisições, na qual é fo
 
 ## Endpoints da API
 
-| Método | Endpoint              | Descrição                                          |
-|--------|-----------------------|----------------------------------------------------|
-| POST   | `/v2/users`           | Atualização tipo de usuário                        |
-| POST   | `/v1/restaurant/{id}` | Cria um restaurante                                |
-| GET    | `/v1/restaurant/{id}` | Buscar restaurante pelo ID                         |
-| GET    | `/v1/restaurant`      | Buscar todos restaurantes                          |
-| DELETE | `/v1/restaurant/{id}` | Exclui restaurante                                 |
-| PATCH  | `/v1/restaurant/`     | Atualizar restaurante                              |
+| Método | Endpoint                  | Descrição                            |
+|--------|---------------------------|--------------------------------------|
+| POST   | `/v2/users`               | Atualização tipo de usuário          |
+| POST   | `/v1/restaurant/{id}`     | Cria um restaurante                  |
+| GET    | `/v1/restaurant/{id}`     | Buscar restaurante pelo ID           |
+| GET    | `/v1/restaurant`          | Buscar todos restaurantes            |
+| DELETE | `/v1/restaurant/{id}`     | Exclui restaurante                   |
+| PATCH  | `/v1/restaurant/`         | Atualizar restaurante                |
+| POST   | `/v1/menu/`               | Cria um menu                         |
+| DELETE | `/v1/menu/{id}`           | Exclui um menu                       |
+| GET    | `/v1/menu/{idRestaurant}` | Buscar todos menus de um restaurante |
+| PATCH  | `/v1/menu/`               | Atualizar um menu                    |
+
 
 ---
 
