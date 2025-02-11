@@ -11,13 +11,14 @@ Este projeto faz parte do Pós Graduação Tech Arquitetura Java da [FIAP](https
 - Atualizar tipo de usuario.
 - Adicionar, atualizar, remover, recuperar restaurantes.
 - Adicionar, atualizar, remover, recuperar menus.
+- Testes.
 
 ---
 
 ## Tecnologias Utilizadas
 
 - Linguagem: Java 17
-- Spring Boot 3 (Web, Data JPA, Security)
+- Spring Boot 3 (Web, Data JPA, Security, JUnit)
 - PostgreSQL
 - Lombok
 - Docker e Docker Compose
@@ -51,13 +52,11 @@ Este projeto faz parte do Pós Graduação Tech Arquitetura Java da [FIAP](https
 
 ## Utilização
 
-A aplicação possui um usuário Master inicial, pois é necessário o login deste usuário para efetuar as chamadas aos outros endpoints, respeitando a segurança da API.
-
-**As credenciais estão definidas como usuário "master" e senha "fiap"**
+Para utilização dos endpoints desse projeto, é necessário mandar token no Bearer Token do Postman. Para obtenção do token é necessario rodar o projeto da FASE 1 para autenticação. URL FASE 1: [https://github.com/FIAP-PosTech-Grupo-12/fiappi]
 
 A documentação da API pode ser acessada por meio do Swagger UI, gerado automaticamente pelo Springdoc OpenAPI.
 
-- Após inicializar a aplicação, acessar pelo seu navegador a URL: [http://localhost:8081/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
+- Após inicializar a aplicação, acessar pelo seu navegador a URL: [http://localhost:8081/swagger-ui/index.html](http://localhost:8081/swagger-ui/index.html)
 
 Essa documentação permite explorar e testar todos os endpoints diretamente no navegador.
 
