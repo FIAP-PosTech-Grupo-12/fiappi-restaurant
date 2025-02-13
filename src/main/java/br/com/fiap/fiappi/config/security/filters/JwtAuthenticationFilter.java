@@ -1,5 +1,6 @@
 package br.com.fiap.fiappi.config.security.filters;
 
+import br.com.fiap.fiappi.adapter.database.jpa.user.entity.User;
 import br.com.fiap.fiappi.adapter.database.jpa.user.repository.UserRepository;
 import br.com.fiap.fiappi.config.security.providers.JwtProvider;
 import jakarta.servlet.FilterChain;
@@ -7,6 +8,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
@@ -35,10 +37,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         var decodedJWT = jwtProvider.validateAccessToken(token);
 
         if (decodedJWT != null && Instant.now().isBefore(decodedJWT.getExpiresAtAsInstant())) {
-            userRepository.findByLogin(decodedJWT.getSubject()).ifPresent(user -> {
-                var authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
-                SecurityContextHolder.getContext().setAuthentication(authentication);
-            });
+
+            User user = userRepository.findByLogin(decodedJWT.getSubject()).get();
+            var authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
+            SecurityContextHolder.getContext().setAuthentication(authentication);
 
         }
 

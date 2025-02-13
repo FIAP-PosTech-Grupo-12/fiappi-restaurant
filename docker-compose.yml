@@ -1,6 +1,6 @@
 version: '3.7'
 services:
-  app:
+  app1:
     build:
       context: .
       dockerfile: Dockerfile
@@ -13,6 +13,8 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresql:5432/fiappi
       - SPRING_DATASOURCE_USERNAME=fiappi
       - SPRING_DATASOURCE_PASSWORD=fiappi
+      - API_SECURITY_SERVER_URL=http://app:8080
+      - API_SECURITY_TOKEN_SECRET=my-secret-key
     networks:
       - springboot-postgres-network
   postgresql:
@@ -34,4 +36,5 @@ volumes:
   postgres-data:
 networks:
   springboot-postgres-network:
-    name: springboot-postgres-network
+    external: true
+
