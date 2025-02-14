@@ -69,11 +69,14 @@ public class MenuJpaGateway implements MenuGateway {
         Map<MenuDTO, String> mapMenusDTOByPhotoPath = new HashMap<>();
 
         mapMenusEntityByPhotoPath.forEach((menuEntity, photoPath) -> {
-            MenuDTO menuDTO = new MenuDTO(idRestaurant,
+            MenuDTO menuDTO = new MenuDTO(
+                    menuEntity.getId(),
+                    idRestaurant,
                     menuEntity.getName(),
                     menuEntity.getDescription(),
                     menuEntity.getPrice(),
-                    menuEntity.getAvailableInRestaurantOnly());
+                    menuEntity.getAvailableInRestaurantOnly(),
+                    null);
             mapMenusDTOByPhotoPath.put(menuDTO, photoPath);
         });
 
