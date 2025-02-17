@@ -1,5 +1,6 @@
 package br.com.fiap.fiappi.config.exception;
 
+import br.com.fiap.fiappi.config.security.exception.UserNotFoundException;
 import br.com.fiap.fiappi.core.menu.exception.ImageConverterException;
 import br.com.fiap.fiappi.core.menu.exception.MenuConverterException;
 import br.com.fiap.fiappi.core.menu.exception.MenuNotFoundException;
@@ -15,9 +16,15 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
-
     @ExceptionHandler(RestaurantNotFoundException.class)
     public ResponseEntity<Object>  handlerRestaurantNotFoundException(RuntimeException ex, WebRequest request){
+        String bodyOfResponse = ex.getMessage();
+        return handleExceptionInternal(ex, bodyOfResponse,
+                new HttpHeaders(), HttpStatus.NOT_FOUND, request);
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<Object>  handlerUserNotFoundException(RuntimeException ex, WebRequest request){
         String bodyOfResponse = ex.getMessage();
         return handleExceptionInternal(ex, bodyOfResponse,
                 new HttpHeaders(), HttpStatus.NOT_FOUND, request);
