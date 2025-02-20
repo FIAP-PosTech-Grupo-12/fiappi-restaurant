@@ -1,6 +1,7 @@
-package br.com.fiap.fiappi.core.restaurant.usecase;
+package br.com.fiap.fiappi.unitario.core.restaurant.usecase;
 
 import br.com.fiap.fiappi.core.restaurant.gateway.RestauranteGateway;
+import br.com.fiap.fiappi.core.restaurant.usecase.FindByIdRestaurantUseCaseImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -13,10 +14,10 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-public class DeleteRestaurantUseCaseTest {
+public class FindByIdRestaurantUseCaseTest {
 
     @InjectMocks
-    DeleteRestaurantUseCaseImpl delete;
+    FindByIdRestaurantUseCaseImpl findById;
 
     @Mock
     RestauranteGateway restauranteGateway;
@@ -28,11 +29,11 @@ public class DeleteRestaurantUseCaseTest {
     }
 
     @Test
-    void shouldDeleteRestaurant(){
+    void shouldFindRestaurantById(){
 
-        delete.delete(UUID.randomUUID());
+        findById.findById(UUID.randomUUID());
 
-        verify(restauranteGateway, times(1)).delete(any());
+        verify(restauranteGateway, times(1)).findBy(any());
 
     }
 

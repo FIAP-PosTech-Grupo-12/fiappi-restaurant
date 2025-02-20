@@ -1,21 +1,23 @@
-package br.com.fiap.fiappi.core.restaurant.usecase;
+package br.com.fiap.fiappi.unitario.core.restaurant.usecase;
 
 import br.com.fiap.fiappi.core.restaurant.gateway.RestauranteGateway;
+import br.com.fiap.fiappi.core.restaurant.usecase.DeleteRestaurantUseCaseImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.data.domain.Pageable;
+
+import java.util.UUID;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-public class FindAllRestaurantUseCaseTest {
+public class DeleteRestaurantUseCaseTest {
 
     @InjectMocks
-    FindAllRestaurantUseCaseImpl findAll;
+    DeleteRestaurantUseCaseImpl delete;
 
     @Mock
     RestauranteGateway restauranteGateway;
@@ -27,12 +29,11 @@ public class FindAllRestaurantUseCaseTest {
     }
 
     @Test
-    void shouldFindAllRestaurants(){
-        Pageable pageable = null;
+    void shouldDeleteRestaurant(){
 
-        findAll.findAll(pageable);
+        delete.delete(UUID.randomUUID());
 
-        verify(restauranteGateway, times(1)).findAll(any());
+        verify(restauranteGateway, times(1)).delete(any());
 
     }
 

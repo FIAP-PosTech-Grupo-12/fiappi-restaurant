@@ -106,4 +106,17 @@
         </plugins>
     </build>
 
+    <profiles>
+        <profile>
+            <id>test</id>
+            <activation>
+                <property>
+                    <name>spring.profiles.active</name>
+                    <value>test</value>
+                </property>
+            </activation>
+        </profile>
+    </profiles>
+
+
 </project>

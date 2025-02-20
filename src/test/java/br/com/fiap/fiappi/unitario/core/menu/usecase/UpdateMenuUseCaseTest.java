@@ -1,8 +1,9 @@
-package br.com.fiap.fiappi.core.menu.usecase;
+package br.com.fiap.fiappi.unitario.core.menu.usecase;
 
 import br.com.fiap.fiappi.core.menu.dto.MenuDTO;
 import br.com.fiap.fiappi.core.menu.gateway.ImageGateway;
 import br.com.fiap.fiappi.core.menu.gateway.MenuGateway;
+import br.com.fiap.fiappi.core.menu.usecase.UpdateMenuUseCaseImpl;
 import com.google.gson.Gson;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,10 +16,10 @@ import java.util.UUID;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-public class DeleteMenuUseCaseTest {
+public class UpdateMenuUseCaseTest {
 
     @InjectMocks
-    DeleteMenuUseCaseImpl deleteMenu;
+    UpdateMenuUseCaseImpl updateMenu;
 
     @Mock
     MenuGateway menuGateway;
@@ -33,14 +34,19 @@ public class DeleteMenuUseCaseTest {
     }
 
     @Test
-    void shouldDeleteMenu(){
+    void shouldUpdateMenu(){
+
+        byte[] bytes = new byte[0];
+
+        UUID uuidMenu = UUID.randomUUID();
+
+        MenuDTO dto = new MenuDTO(uuidMenu, UUID.randomUUID(), "nameMenu", "Description", 10.00, true, bytes);
 
         when(menuGateway.findPathByID(any())).thenReturn("/path");
 
-        deleteMenu.delete(UUID.randomUUID());
+        updateMenu.update(dto, UUID.randomUUID());
 
-        verify(imageGateway, times(1)).deleteByPath(any());
-        verify(menuGateway, times(1)).deleteById(any());
+        verify(menuGateway, times(1)).update(any());
 
     }
 

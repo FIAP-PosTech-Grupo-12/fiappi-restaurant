@@ -1,8 +1,9 @@
-package br.com.fiap.fiappi.core.menu.usecase;
+package br.com.fiap.fiappi.unitario.core.menu.usecase;
 
 import br.com.fiap.fiappi.core.menu.dto.MenuDTO;
 import br.com.fiap.fiappi.core.menu.gateway.ImageGateway;
 import br.com.fiap.fiappi.core.menu.gateway.MenuGateway;
+import br.com.fiap.fiappi.core.menu.usecase.CreateMenuUseCaseImpl;
 import br.com.fiap.fiappi.core.restaurant.dto.RestaurantDTO;
 import br.com.fiap.fiappi.core.restaurant.enums.KitchenTypeEnum;
 import br.com.fiap.fiappi.core.restaurant.gateway.RestauranteGateway;

@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS menu_items (
     updated_at timestamp,
 
     CONSTRAINT fk_menu_restaurant FOREIGN KEY (restaurant_id) REFERENCES restaurants (id),
-    CONSTRAINT fk_restaurant_creator FOREIGN KEY (creator_id) REFERENCES users (id)
+    CONSTRAINT fk_menu_creator FOREIGN KEY (creator_id) REFERENCES users (id)
 
 );
 

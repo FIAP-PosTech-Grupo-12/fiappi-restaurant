@@ -1,8 +1,9 @@
-package br.com.fiap.fiappi.core.restaurant.usecase;
+package br.com.fiap.fiappi.unitario.core.restaurant.usecase;
 
 import br.com.fiap.fiappi.core.restaurant.dto.RestaurantDTO;
 import br.com.fiap.fiappi.core.restaurant.enums.KitchenTypeEnum;
 import br.com.fiap.fiappi.core.restaurant.gateway.RestauranteGateway;
+import br.com.fiap.fiappi.core.restaurant.usecase.UpdateRestaurantUseCaseImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -15,10 +16,10 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-public class CreateRestaurantUseCaseTest {
+public class UpdateRestaurantUseCaseTest {
 
     @InjectMocks
-    CreateRestaurantUseCaseImpl createRestaurantUseCase;
+    UpdateRestaurantUseCaseImpl updateRestaurant;
 
     @Mock
     RestauranteGateway restauranteGateway;
@@ -30,7 +31,7 @@ public class CreateRestaurantUseCaseTest {
     }
 
     @Test
-    void shouldCreateRestaurant(){
+    void shouldUpdateRestaurant(){
 
         RestaurantDTO restaurantDTO = new RestaurantDTO(UUID.randomUUID(),
                 "Name",
@@ -39,9 +40,9 @@ public class CreateRestaurantUseCaseTest {
                 "7-22",
                 UUID.randomUUID());
 
-        createRestaurantUseCase.create(restaurantDTO, UUID.randomUUID());
+        updateRestaurant.update(restaurantDTO, UUID.randomUUID());
 
-        verify(restauranteGateway, times(1)).create(any());
+        verify(restauranteGateway, times(1)).update(any());
 
     }
 
