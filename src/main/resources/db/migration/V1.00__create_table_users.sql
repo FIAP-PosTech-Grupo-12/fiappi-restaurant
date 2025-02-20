@@ -9,4 +9,3 @@ CREATE TABLE users
     updated_date TIMESTAMP,
     address      VARCHAR(255)
 );
-
