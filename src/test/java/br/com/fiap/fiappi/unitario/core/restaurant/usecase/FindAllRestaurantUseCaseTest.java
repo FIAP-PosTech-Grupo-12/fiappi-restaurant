@@ -1,6 +1,6 @@
 package br.com.fiap.fiappi.unitario.core.restaurant.usecase;
 
-import br.com.fiap.fiappi.core.restaurant.gateway.RestauranteGateway;
+import br.com.fiap.fiappi.core.restaurant.gateway.RestaurantGateway;
 import br.com.fiap.fiappi.core.restaurant.usecase.FindAllRestaurantUseCaseImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,7 +19,7 @@ public class FindAllRestaurantUseCaseTest {
     FindAllRestaurantUseCaseImpl findAll;
 
     @Mock
-    RestauranteGateway restauranteGateway;
+    RestaurantGateway restaurantGateway;
 
 
     @BeforeEach
@@ -33,7 +33,7 @@ public class FindAllRestaurantUseCaseTest {
 
         findAll.findAll(pageable);
 
-        verify(restauranteGateway, times(1)).findAll(any());
+        verify(restaurantGateway, times(1)).findAll(any());
 
     }
 

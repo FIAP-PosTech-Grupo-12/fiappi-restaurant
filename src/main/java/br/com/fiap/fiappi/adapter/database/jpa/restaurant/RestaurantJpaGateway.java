@@ -1,13 +1,14 @@
 package br.com.fiap.fiappi.adapter.database.jpa.restaurant;
 
-import br.com.fiap.fiappi.adapter.database.jpa.restaurant.entity.RestauranteEntity;
+import br.com.fiap.fiappi.adapter.database.jpa.restaurant.entity.RestaurantEntity;
 import br.com.fiap.fiappi.adapter.database.jpa.restaurant.repository.RestaurantRepository;
+import br.com.fiap.fiappi.adapter.database.jpa.user.repository.UserRepository;
+import br.com.fiap.fiappi.config.security.exception.UserNotFoundException;
 import br.com.fiap.fiappi.core.menu.dto.MenuDTO;
 import br.com.fiap.fiappi.core.restaurant.domain.Restaurant;
-import br.com.fiap.fiappi.core.restaurant.dto.RestaurantDTO;
 import br.com.fiap.fiappi.core.restaurant.dto.RestaurantMenuDTO;
 import br.com.fiap.fiappi.core.restaurant.exception.RestaurantNotFoundException;
-import br.com.fiap.fiappi.core.restaurant.gateway.RestauranteGateway;
+import br.com.fiap.fiappi.core.restaurant.gateway.RestaurantGateway;
 import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,35 +18,40 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-public class RestaurantJpaGateway implements RestauranteGateway {
+public class RestaurantJpaGateway implements RestaurantGateway {
 
     private final RestaurantRepository restaurantRepository;
+    private final UserRepository userRepository;
 
-    public RestaurantJpaGateway(RestaurantRepository restaurantRepository) {
+    public RestaurantJpaGateway(RestaurantRepository restaurantRepository, UserRepository userRepository) {
         this.restaurantRepository = restaurantRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
     @Transactional
-    public void create(Restaurant restaurante) {
-        RestauranteEntity restauranteEntity = new RestauranteEntity(
-                restaurante.getName(),
-                restaurante.getAddress(),
-                restaurante.getKitchenType(),
-                restaurante.getOpeningHours(),
-                restaurante.getOwnerId(),
-                restaurante.getCreatorId(),
-                restaurante.getCreatedAt(),
-                restaurante.getUpdatedBy(),
-                restaurante.getUpdatedAt()
+    public void create(Restaurant restaurant) {
+
+        userRepository.findById(restaurant.getOwnerId()).orElseThrow(() -> new UserNotFoundException("Owner id user not found"));
+
+        RestaurantEntity restaurantEntity = new RestaurantEntity(
+                restaurant.getName(),
+                restaurant.getAddress(),
+                restaurant.getKitchenType(),
+                restaurant.getOpeningHours(),
+                restaurant.getOwnerId(),
+                restaurant.getCreatorId(),
+                restaurant.getCreatedAt(),
+                restaurant.getUpdatedBy(),
+                restaurant.getUpdatedAt()
         );
 
-        restaurantRepository.save(restauranteEntity);
+        restaurantRepository.save(restaurantEntity);
     }
 
     @Override
     public RestaurantMenuDTO findBy(UUID id) {
-        RestauranteEntity restaurant = restaurantRepository.findById(id).orElseThrow(() -> new RestaurantNotFoundException("Restaurant not found"));
+        RestaurantEntity restaurant = restaurantRepository.findById(id).orElseThrow(() -> new RestaurantNotFoundException("Restaurant not found"));
 
         return new RestaurantMenuDTO(
                 restaurant.getId(),
@@ -69,7 +75,7 @@ public class RestaurantJpaGateway implements RestauranteGateway {
     @Override
     public List<RestaurantMenuDTO> findAll(Pageable pageable) {
 
-        Page<RestauranteEntity> restaurants = restaurantRepository.findAll(pageable);
+        Page<RestaurantEntity> restaurants = restaurantRepository.findAll(pageable);
 
 
         return restaurants.stream()
@@ -99,7 +105,7 @@ public class RestaurantJpaGateway implements RestauranteGateway {
 
     @Override
     public void update(Restaurant restaurante) {
-        RestauranteEntity restauranteEntity = new RestauranteEntity(
+        RestaurantEntity restaurantEntity = new RestaurantEntity(
                 restaurante.getId(),
                 restaurante.getName(),
                 restaurante.getAddress(),
@@ -112,7 +118,7 @@ public class RestaurantJpaGateway implements RestauranteGateway {
                 restaurante.getUpdatedAt()
         );
 
-        restaurantRepository.save(restauranteEntity);
+        restaurantRepository.save(restaurantEntity);
 
     }
 }

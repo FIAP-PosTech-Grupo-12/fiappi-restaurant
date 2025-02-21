@@ -15,7 +15,7 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RestauranteEntity {
+public class RestaurantEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -52,7 +52,7 @@ public class RestauranteEntity {
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
     private List<MenuEntity> menus = new ArrayList<>();
 
-    public RestauranteEntity(String name, String address, KitchenTypeEnum kitchenType, String openingHours, UUID ownerId, UUID creatorId, LocalDateTime createdAt, UUID updatedBy, LocalDateTime updatedAt) {
+    public RestaurantEntity(String name, String address, KitchenTypeEnum kitchenType, String openingHours, UUID ownerId, UUID creatorId, LocalDateTime createdAt, UUID updatedBy, LocalDateTime updatedAt) {
         this.name = name;
         this.address = address;
         this.kitchenType = kitchenType;
@@ -64,11 +64,11 @@ public class RestauranteEntity {
         this.updatedAt = updatedAt;
     }
 
-    public RestauranteEntity(UUID id) {
+    public RestaurantEntity(UUID id) {
         this.id = id;
     }
 
-    public RestauranteEntity(UUID id, String name, String address, KitchenTypeEnum kitchenType, String openingHours, UUID ownerId, UUID creatorId, LocalDateTime createdAt, UUID updatedBy, LocalDateTime updatedAt) {
+    public RestaurantEntity(UUID id, String name, String address, KitchenTypeEnum kitchenType, String openingHours, UUID ownerId, UUID creatorId, LocalDateTime createdAt, UUID updatedBy, LocalDateTime updatedAt) {
         this.id = id;
         this.name = name;
         this.address = address;

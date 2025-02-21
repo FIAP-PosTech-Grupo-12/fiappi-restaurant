@@ -2,7 +2,7 @@ package br.com.fiap.fiappi.unitario.core.restaurant.usecase;
 
 import br.com.fiap.fiappi.core.restaurant.dto.RestaurantDTO;
 import br.com.fiap.fiappi.core.restaurant.enums.KitchenTypeEnum;
-import br.com.fiap.fiappi.core.restaurant.gateway.RestauranteGateway;
+import br.com.fiap.fiappi.core.restaurant.gateway.RestaurantGateway;
 import br.com.fiap.fiappi.core.restaurant.usecase.CreateRestaurantUseCaseImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,7 +22,7 @@ public class CreateRestaurantUseCaseTest {
     CreateRestaurantUseCaseImpl createRestaurantUseCase;
 
     @Mock
-    RestauranteGateway restauranteGateway;
+    RestaurantGateway restaurantGateway;
 
 
     @BeforeEach
@@ -42,7 +42,7 @@ public class CreateRestaurantUseCaseTest {
 
         createRestaurantUseCase.create(restaurantDTO, UUID.randomUUID());
 
-        verify(restauranteGateway, times(1)).create(any());
+        verify(restaurantGateway, times(1)).create(any());
 
     }
 

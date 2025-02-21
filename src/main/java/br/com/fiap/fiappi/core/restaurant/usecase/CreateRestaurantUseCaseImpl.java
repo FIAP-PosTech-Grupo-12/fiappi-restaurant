@@ -2,8 +2,7 @@ package br.com.fiap.fiappi.core.restaurant.usecase;
 
 import br.com.fiap.fiappi.core.restaurant.domain.Restaurant;
 import br.com.fiap.fiappi.core.restaurant.dto.RestaurantDTO;
-import br.com.fiap.fiappi.core.restaurant.gateway.RestauranteGateway;
-import br.com.fiap.fiappi.adapter.database.jpa.user.entity.User;
+import br.com.fiap.fiappi.core.restaurant.gateway.RestaurantGateway;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -16,7 +15,7 @@ import java.util.UUID;
 @Service
 public class CreateRestaurantUseCaseImpl implements CreateRestaurantUseCase{
 
-    private final RestauranteGateway restauranteGateway;
+    private final RestaurantGateway restaurantGateway;
 
     @Override
     public void create(RestaurantDTO restaurantDTO, UUID userRequestId) {
@@ -26,7 +25,7 @@ public class CreateRestaurantUseCaseImpl implements CreateRestaurantUseCase{
                 restaurantDTO.openingHours(), restaurantDTO.ownerId(), userRequestId,
                 LocalDateTime.now(), userRequestId, LocalDateTime.now());
 
-        restauranteGateway.create(restaurante);
+        restaurantGateway.create(restaurante);
 
 
     }

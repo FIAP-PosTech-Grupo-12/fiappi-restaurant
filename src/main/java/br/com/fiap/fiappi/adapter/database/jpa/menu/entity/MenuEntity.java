@@ -1,9 +1,7 @@
 package br.com.fiap.fiappi.adapter.database.jpa.menu.entity;
 
-import br.com.fiap.fiappi.adapter.database.jpa.restaurant.entity.RestauranteEntity;
-import br.com.fiap.fiappi.core.restaurant.domain.Restaurant;
+import br.com.fiap.fiappi.adapter.database.jpa.restaurant.entity.RestaurantEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -24,7 +22,7 @@ public class MenuEntity {
     @ManyToOne
     @JsonIgnore
     @JoinColumn(name = "restaurant_id")
-    private RestauranteEntity restaurant;
+    private RestaurantEntity restaurant;
 
     @Column
     private String name;
@@ -53,7 +51,7 @@ public class MenuEntity {
     @Column
     private LocalDateTime updatedAt;
 
-    public MenuEntity(RestauranteEntity restaurant, String name, String description, Double price, Boolean availableInRestaurantOnly, String photoPath, UUID creatorId, LocalDateTime createdAt, UUID updatedBy, LocalDateTime updatedAt) {
+    public MenuEntity(RestaurantEntity restaurant, String name, String description, Double price, Boolean availableInRestaurantOnly, String photoPath, UUID creatorId, LocalDateTime createdAt, UUID updatedBy, LocalDateTime updatedAt) {
         this.restaurant = restaurant;
         this.name = name;
         this.description = description;

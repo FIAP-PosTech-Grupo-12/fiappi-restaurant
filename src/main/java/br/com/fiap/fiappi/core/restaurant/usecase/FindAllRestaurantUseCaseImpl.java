@@ -1,7 +1,7 @@
 package br.com.fiap.fiappi.core.restaurant.usecase;
 
 import br.com.fiap.fiappi.core.restaurant.dto.RestaurantMenuDTO;
-import br.com.fiap.fiappi.core.restaurant.gateway.RestauranteGateway;
+import br.com.fiap.fiappi.core.restaurant.gateway.RestaurantGateway;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
@@ -14,11 +14,11 @@ import java.util.List;
 @Service
 public class FindAllRestaurantUseCaseImpl implements FindAllRestaurantUseCase{
 
-    private final RestauranteGateway restauranteGateway;
+    private final RestaurantGateway restaurantGateway;
 
 
     @Override
     public List<RestaurantMenuDTO> findAll(Pageable pageable) {
-        return restauranteGateway.findAll(pageable);
+        return restaurantGateway.findAll(pageable);
     }
 }

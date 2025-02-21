@@ -2,19 +2,18 @@ package br.com.fiap.fiappi.adapter.database.jpa.menu;
 
 import br.com.fiap.fiappi.adapter.database.jpa.menu.entity.MenuEntity;
 import br.com.fiap.fiappi.adapter.database.jpa.menu.repository.MenuRepository;
-import br.com.fiap.fiappi.adapter.database.jpa.restaurant.entity.RestauranteEntity;
+import br.com.fiap.fiappi.adapter.database.jpa.restaurant.entity.RestaurantEntity;
+import br.com.fiap.fiappi.adapter.database.jpa.restaurant.repository.RestaurantRepository;
 import br.com.fiap.fiappi.core.menu.domain.Menu;
 import br.com.fiap.fiappi.core.menu.dto.MenuDTO;
 import br.com.fiap.fiappi.core.menu.exception.MenuNotFoundException;
 import br.com.fiap.fiappi.core.menu.gateway.MenuGateway;
-import br.com.fiap.fiappi.core.restaurant.domain.Restaurant;
 import br.com.fiap.fiappi.core.restaurant.exception.RestaurantNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.function.Function;
@@ -25,12 +24,15 @@ import java.util.stream.Collectors;
 public class MenuJpaGateway implements MenuGateway {
 
     private final MenuRepository menuRepository;
+    private final RestaurantRepository restaurantRepository;
 
     @Override
     @Transactional
     public void create(Menu menu) {
 
-        MenuEntity menuEntity = new MenuEntity(new RestauranteEntity(menu.getRestaurant().getId()),
+        restaurantRepository.findById(menu.getRestaurant().getId()).orElseThrow(() -> new RestaurantNotFoundException("Restaurant does not exist"));
+
+        MenuEntity menuEntity = new MenuEntity(new RestaurantEntity(menu.getRestaurant().getId()),
                 menu.getName(),
                 menu.getDescription(),
                 menu.getPrice(),
@@ -87,7 +89,7 @@ public class MenuJpaGateway implements MenuGateway {
     public void update(Menu menu) {
         MenuEntity menuEntity = new MenuEntity(
                 menu.getId(),
-                new RestauranteEntity(menu.getRestaurant().getId()),
+                new RestaurantEntity(menu.getRestaurant().getId()),
                 menu.getName(),
                 menu.getDescription(),
                 menu.getPrice(),
