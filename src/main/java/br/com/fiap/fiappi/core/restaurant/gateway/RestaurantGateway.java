@@ -17,4 +17,6 @@ public interface RestaurantGateway {
     void delete(UUID id);
 
     void update(Restaurant restaurante);
+
+    List<String> findPathsImagesByIdRestaurant(UUID id);
 }

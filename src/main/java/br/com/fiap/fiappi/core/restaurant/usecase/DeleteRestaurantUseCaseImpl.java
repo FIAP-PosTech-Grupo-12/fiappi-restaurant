@@ -1,10 +1,15 @@
 package br.com.fiap.fiappi.core.restaurant.usecase;
 
+import br.com.fiap.fiappi.core.menu.dto.MenuDTO;
+import br.com.fiap.fiappi.core.menu.gateway.ImageGateway;
+import br.com.fiap.fiappi.core.menu.gateway.MenuGateway;
+import br.com.fiap.fiappi.core.restaurant.dto.RestaurantMenuDTO;
 import br.com.fiap.fiappi.core.restaurant.gateway.RestaurantGateway;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Slf4j
@@ -13,10 +18,17 @@ import java.util.UUID;
 public class DeleteRestaurantUseCaseImpl implements DeleteRestaurantUseCase{
 
     private final RestaurantGateway restaurantGateway;
+    private final MenuGateway menuGateway;
+    private final ImageGateway imageGateway;
 
 
     @Override
     public void delete(UUID id) {
+
+        List<String> paths =  restaurantGateway.findPathsImagesByIdRestaurant(id);
+
+        paths.forEach(imageGateway::deleteByPath);
+
         restaurantGateway.delete(id);
     }
 }

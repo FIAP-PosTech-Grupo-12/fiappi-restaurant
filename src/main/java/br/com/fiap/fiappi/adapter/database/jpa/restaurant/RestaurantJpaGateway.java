@@ -1,5 +1,6 @@
 package br.com.fiap.fiappi.adapter.database.jpa.restaurant;
 
+import br.com.fiap.fiappi.adapter.database.jpa.menu.entity.MenuEntity;
 import br.com.fiap.fiappi.adapter.database.jpa.restaurant.entity.RestaurantEntity;
 import br.com.fiap.fiappi.adapter.database.jpa.restaurant.repository.RestaurantRepository;
 import br.com.fiap.fiappi.adapter.database.jpa.user.repository.UserRepository;
@@ -119,6 +120,14 @@ public class RestaurantJpaGateway implements RestaurantGateway {
         );
 
         restaurantRepository.save(restaurantEntity);
+
+    }
+
+    @Override
+    public List<String> findPathsImagesByIdRestaurant(UUID id) {
+        RestaurantEntity restaurant = restaurantRepository.findById(id).orElseThrow(() -> new RestaurantNotFoundException("Restaurant not found"));
+
+        return restaurant.getMenus().stream().map(MenuEntity::getPhotoPath).toList();
 
     }
 }
