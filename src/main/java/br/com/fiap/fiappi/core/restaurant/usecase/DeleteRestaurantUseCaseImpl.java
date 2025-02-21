@@ -1,9 +1,6 @@
 package br.com.fiap.fiappi.core.restaurant.usecase;
 
-import br.com.fiap.fiappi.core.menu.dto.MenuDTO;
 import br.com.fiap.fiappi.core.menu.gateway.ImageGateway;
-import br.com.fiap.fiappi.core.menu.gateway.MenuGateway;
-import br.com.fiap.fiappi.core.restaurant.dto.RestaurantMenuDTO;
 import br.com.fiap.fiappi.core.restaurant.gateway.RestaurantGateway;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +15,6 @@ import java.util.UUID;
 public class DeleteRestaurantUseCaseImpl implements DeleteRestaurantUseCase{
 
     private final RestaurantGateway restaurantGateway;
-    private final MenuGateway menuGateway;
     private final ImageGateway imageGateway;
 
 
