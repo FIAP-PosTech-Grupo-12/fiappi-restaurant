@@ -4,6 +4,9 @@ import br.com.fiap.fiappi.core.menu.dto.MenuDTO;
 import br.com.fiap.fiappi.core.menu.gateway.ImageGateway;
 import br.com.fiap.fiappi.core.menu.gateway.MenuGateway;
 import br.com.fiap.fiappi.core.menu.usecase.CreateMenuUseCaseImpl;
+import br.com.fiap.fiappi.core.restaurant.dto.RestaurantMenuDTO;
+import br.com.fiap.fiappi.core.restaurant.enums.KitchenTypeEnum;
+import br.com.fiap.fiappi.core.restaurant.gateway.RestaurantGateway;
 import com.google.gson.Gson;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,6 +14,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -27,6 +31,9 @@ public class CreateMenuUseCaseTest {
     @Mock
     ImageGateway imageGateway;
 
+    @Mock
+    RestaurantGateway restaurantGateway;
+
 
     @BeforeEach
     void setup(){
@@ -35,8 +42,8 @@ public class CreateMenuUseCaseTest {
 
     @Test
     void shouldCreateMenu(){
-
-        MenuDTO dto = new MenuDTO(UUID.randomUUID(), "nameMenu", "Description", 10.00, true);
+        UUID idRestaurant = UUID.randomUUID();
+        MenuDTO dto = new MenuDTO(idRestaurant, "nameMenu", "Description", 10.00, true);
 
         Gson gson = new Gson();
 
@@ -45,6 +52,7 @@ public class CreateMenuUseCaseTest {
         byte[] bytes = new byte[0];
 
         when(imageGateway.create(any(), any())).thenReturn("/path");
+        when(restaurantGateway.findBy(idRestaurant)).thenReturn(new RestaurantMenuDTO(idRestaurant, "name", "address", KitchenTypeEnum.FAST_FOOD, "7-22", UUID.randomUUID(), new ArrayList<>()));
 
         createMenu.create(bytes, dtoString, UUID.randomUUID());
 
