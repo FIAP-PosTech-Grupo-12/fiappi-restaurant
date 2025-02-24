@@ -32,6 +32,7 @@ Este projeto faz parte do Pós Graduação Tech Arquitetura Java da [FIAP](https
 
 - Docker e Docker Compose instalados
 - JDK 17 ou superior
+- Rodar projeto da primeira fase para obtenção do token
 
 ### Passos
 

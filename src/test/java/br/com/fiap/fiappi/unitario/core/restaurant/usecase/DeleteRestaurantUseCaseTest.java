@@ -1,5 +1,6 @@
 package br.com.fiap.fiappi.unitario.core.restaurant.usecase;
 
+import br.com.fiap.fiappi.core.menu.gateway.ImageGateway;
 import br.com.fiap.fiappi.core.restaurant.gateway.RestaurantGateway;
 import br.com.fiap.fiappi.core.restaurant.usecase.DeleteRestaurantUseCaseImpl;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,8 +12,7 @@ import org.mockito.MockitoAnnotations;
 import java.util.UUID;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 public class DeleteRestaurantUseCaseTest {
 
@@ -22,6 +22,9 @@ public class DeleteRestaurantUseCaseTest {
     @Mock
     RestaurantGateway restaurantGateway;
 
+    @Mock
+    ImageGateway imageGateway;
+
 
     @BeforeEach
     void setup(){
@@ -30,6 +33,8 @@ public class DeleteRestaurantUseCaseTest {
 
     @Test
     void shouldDeleteRestaurant(){
+
+        doNothing().when(imageGateway).deleteByPath(any());
 
         delete.delete(UUID.randomUUID());
 
