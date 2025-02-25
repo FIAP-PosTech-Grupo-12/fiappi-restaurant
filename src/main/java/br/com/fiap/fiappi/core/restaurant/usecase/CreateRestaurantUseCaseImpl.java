@@ -27,6 +27,5 @@ public class CreateRestaurantUseCaseImpl implements CreateRestaurantUseCase{
 
         restaurantGateway.create(restaurante);
 
-
     }
 }

@@ -4,6 +4,7 @@ import br.com.fiap.fiappi.core.restaurant.dto.RestaurantDTO;
 import br.com.fiap.fiappi.core.restaurant.enums.KitchenTypeEnum;
 import br.com.fiap.fiappi.core.restaurant.gateway.RestaurantGateway;
 import br.com.fiap.fiappi.core.restaurant.usecase.UpdateRestaurantUseCaseImpl;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -18,16 +19,22 @@ import static org.mockito.Mockito.verify;
 
 public class UpdateRestaurantUseCaseTest {
 
+    AutoCloseable mock;
+
     @InjectMocks
     UpdateRestaurantUseCaseImpl updateRestaurant;
 
     @Mock
     RestaurantGateway restaurantGateway;
 
-
     @BeforeEach
     void setup(){
-        MockitoAnnotations.openMocks(this);
+        mock = MockitoAnnotations.openMocks(this);
+    }
+
+    @AfterEach
+    void tearDown() throws Exception {
+        mock.close();
     }
 
     @Test
@@ -43,7 +50,6 @@ public class UpdateRestaurantUseCaseTest {
         updateRestaurant.update(restaurantDTO, UUID.randomUUID());
 
         verify(restaurantGateway, times(1)).update(any());
-
     }
 
 }

@@ -3,6 +3,7 @@ package br.com.fiap.fiappi.unitario.core.restaurant.usecase;
 import br.com.fiap.fiappi.core.menu.gateway.ImageGateway;
 import br.com.fiap.fiappi.core.restaurant.gateway.RestaurantGateway;
 import br.com.fiap.fiappi.core.restaurant.usecase.DeleteRestaurantUseCaseImpl;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -16,6 +17,8 @@ import static org.mockito.Mockito.*;
 
 public class DeleteRestaurantUseCaseTest {
 
+    AutoCloseable mock;
+
     @InjectMocks
     DeleteRestaurantUseCaseImpl delete;
 
@@ -25,10 +28,14 @@ public class DeleteRestaurantUseCaseTest {
     @Mock
     ImageGateway imageGateway;
 
-
     @BeforeEach
     void setup(){
-        MockitoAnnotations.openMocks(this);
+        mock = MockitoAnnotations.openMocks(this);
+    }
+
+    @AfterEach
+    void tearDown() throws Exception {
+        mock.close();
     }
 
     @Test

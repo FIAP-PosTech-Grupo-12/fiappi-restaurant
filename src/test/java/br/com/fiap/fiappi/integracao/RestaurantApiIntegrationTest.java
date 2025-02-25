@@ -44,12 +44,12 @@ public class RestaurantApiIntegrationTest {
     @Autowired
     protected MockMvc mvc;
 
-    private UUID ownerId = UUID.fromString("1555d5ff-837c-4d6e-a824-114ce54921ad");
+    private final UUID ownerId = UUID.fromString("1555d5ff-837c-4d6e-a824-114ce54921ad");
 
     @BeforeEach
     void setup(){
 
-        User user = new User(ownerId, "Master", "test_master@master.com", "master", "123", LocalDateTime.now(), "address", RoleName.ROLE_ADMINISTRATOR); // Ajuste conforme sua entidade
+        User user = new User(ownerId, "Master", "test_master@master.com", "master", "123", LocalDateTime.now(), "address", RoleName.ROLE_ADMINISTRATOR);
 
         UsernamePasswordAuthenticationToken auth =
                 new UsernamePasswordAuthenticationToken(user, null, List.of());
