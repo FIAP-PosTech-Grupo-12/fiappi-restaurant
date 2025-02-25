@@ -47,10 +47,12 @@ public class ImageSpringGateway implements ImageGateway {
 
         Path pathWithName = Paths.get("src/main/resources" + path);
 
-        try {
-            Files.delete(pathWithName);
-        } catch (IOException e) {
-            throw new ImageConverterException("Error to delete image");
+        if (Files.exists(pathWithName)) {
+            try {
+                Files.delete(pathWithName);
+            } catch (IOException e) {
+                throw new ImageConverterException("Error to delete image");
+            }
         }
     }
 
