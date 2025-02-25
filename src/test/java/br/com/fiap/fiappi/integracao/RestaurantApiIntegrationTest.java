@@ -1,18 +1,17 @@
 package br.com.fiap.fiappi.integracao;
 
-import br.com.fiap.fiappi.adapter.database.jpa.restaurant.repository.RestaurantRepository;
 import br.com.fiap.fiappi.adapter.database.jpa.user.entity.User;
-import br.com.fiap.fiappi.adapter.web.RestaurantApiController;
 import br.com.fiap.fiappi.core.restaurant.dto.RestaurantDTO;
 import br.com.fiap.fiappi.core.restaurant.enums.KitchenTypeEnum;
 import br.com.fiap.fiappi.core.user.enums.RoleName;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContext;
@@ -37,6 +36,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ActiveProfiles("test")
 @AutoConfigureMockMvc(addFilters = false)
 @Sql(scripts = "/db/basic-inserts.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_CLASS)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class RestaurantApiIntegrationTest {
 
     private static final String URL_BASE = "/v1/restaurant";
@@ -44,18 +44,12 @@ public class RestaurantApiIntegrationTest {
     @Autowired
     protected MockMvc mvc;
 
-    @Autowired
-    private RestaurantApiController restaurantApiController;
-
-    @Autowired
-    private RestaurantRepository repository;
-
-    private UUID onwerId = UUID.fromString("1555d5ff-837c-4d6e-a824-114ce54921ad");
+    private UUID ownerId = UUID.fromString("1555d5ff-837c-4d6e-a824-114ce54921ad");
 
     @BeforeEach
     void setup(){
 
-        User user = new User(onwerId, "Master", "test_master@master.com", "master", "123", LocalDateTime.now(), "address", RoleName.ROLE_ADMINISTRATOR); // Ajuste conforme sua entidade
+        User user = new User(ownerId, "Master", "test_master@master.com", "master", "123", LocalDateTime.now(), "address", RoleName.ROLE_ADMINISTRATOR); // Ajuste conforme sua entidade
 
         UsernamePasswordAuthenticationToken auth =
                 new UsernamePasswordAuthenticationToken(user, null, List.of());
@@ -70,13 +64,12 @@ public class RestaurantApiIntegrationTest {
 
         RestaurantDTO dto = new RestaurantDTO(
                 UUID.randomUUID(),
-                "test",
-                "Adress",
+                "Test",
+                "Address",
                 KitchenTypeEnum.FAST_FOOD,
                 "7-22",
-                onwerId
+                ownerId
         );
-
 
         MockHttpServletRequestBuilder request = MockMvcRequestBuilders
                 .post(URL_BASE)
@@ -90,6 +83,7 @@ public class RestaurantApiIntegrationTest {
     }
 
     @Test
+    @Order(1)
     void shouldFindRestaurantById() throws Exception {
 
         MockHttpServletRequestBuilder request = MockMvcRequestBuilders
@@ -97,10 +91,57 @@ public class RestaurantApiIntegrationTest {
 
         mvc.perform(request)
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.name", is("Restaurante Sabor Caseiro")));
+                .andExpect(jsonPath("$.id", is("b28a1c34-4a6b-4e3d-a70f-5d2f1a5c6e3a")));
     }
 
+    @Test
+    @Order(2)
+    void shouldListRestaurants() throws Exception {
 
+        Pageable pageable = PageRequest.of(0, 10);
+
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders
+                .get(URL_BASE)
+                .param("page", String.valueOf(pageable.getPageNumber()))
+                .param("size", String.valueOf(pageable.getPageSize()));
+
+        mvc.perform(request)
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.length()", is(2)))
+                .andExpect(jsonPath("$[0].name", is("Pizzaria Delícia")))
+                .andExpect(jsonPath("$[1].name", is("Restaurante Sabor Caseiro")));
+    }
+
+    @Test
+    void shouldDeleteRestaurant() throws Exception {
+
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders
+                .delete(URL_BASE + "/b28a1c34-4a6b-4e3d-a70f-5d2f1a5c6e3a");
+
+        mvc.perform(request)
+                .andExpect(status().isNoContent());
+    }
+
+    @Test
+    void shouldUpdateRestaurant() throws Exception {
+
+        RestaurantDTO dto = new RestaurantDTO(
+                UUID.fromString("b28a1c34-4a6b-4e3d-a70f-5d2f1a5c6e3a"),
+                "Restaurante Sabor Caseiro Novo",
+                "Endereco novo, numero 123",
+                KitchenTypeEnum.FAST_FOOD,
+                "7-22",
+                ownerId
+        );
+
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders
+                .patch(URL_BASE)
+                .content(asJsonString(dto))
+                .contentType(MediaType.APPLICATION_JSON);
+
+        mvc.perform(request)
+                .andExpect(status().isOk());
+    }
 
     public static String asJsonString(final Object obj) {
         try {
