@@ -1,5 +1,6 @@
 package br.com.fiap.fiappi.unitario.adapter.database.jpa.restaurant;
 
+import br.com.fiap.fiappi.adapter.database.jpa.menu.entity.MenuEntity;
 import br.com.fiap.fiappi.adapter.database.jpa.restaurant.RestaurantJpaGateway;
 import br.com.fiap.fiappi.adapter.database.jpa.restaurant.entity.RestaurantEntity;
 import br.com.fiap.fiappi.adapter.database.jpa.restaurant.repository.RestaurantRepository;
@@ -21,10 +22,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -156,5 +154,22 @@ class RestaurantJpaGatewayTest {
         restaurantJpaGateway.update(restaurant);
 
         verify(restaurantRepository, times(1)).save(restaurantEntity);
+    }
+
+    @Test
+    void shouldFindPathsImagesByValidId() {
+
+        when(restaurantRepository.findById(restaurantId)).thenReturn(Optional.of(restaurantEntity));
+
+        assertEquals(restaurantEntity.getMenus().stream().map(MenuEntity::getPhotoPath).toList(),
+                restaurantJpaGateway.findPathsImagesByIdRestaurant(restaurantId));
+    }
+
+    @Test
+    void shouldNotFindPathsImagesByInvalidId() {
+
+        when(restaurantRepository.findById(restaurantId)).thenReturn(Optional.empty());
+
+        assertThrows(RestaurantNotFoundException.class, () -> restaurantJpaGateway.findPathsImagesByIdRestaurant(restaurantId));
     }
 }
