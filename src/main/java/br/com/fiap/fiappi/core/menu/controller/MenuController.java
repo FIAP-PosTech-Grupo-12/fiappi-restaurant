@@ -1,18 +1,16 @@
 package br.com.fiap.fiappi.core.menu.controller;
 
+import java.util.List;
+import java.util.UUID;
+
+import org.springframework.stereotype.Component;
+
 import br.com.fiap.fiappi.core.menu.dto.MenuDTO;
 import br.com.fiap.fiappi.core.menu.usecase.CreateMenuUseCase;
 import br.com.fiap.fiappi.core.menu.usecase.DeleteMenuUseCase;
 import br.com.fiap.fiappi.core.menu.usecase.FindMenuByIdRestaurantUseCase;
 import br.com.fiap.fiappi.core.menu.usecase.UpdateMenuUseCase;
-import br.com.fiap.fiappi.core.restaurant.dto.RestaurantDTO;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Component;
-
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
