@@ -2,13 +2,13 @@ package br.com.fiap.fiappi.core.menu.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.UUID;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class MenuDTO {
@@ -20,13 +20,13 @@ public class MenuDTO {
     private Boolean availableInRestaurantOnly;
     private byte[] bytes;
 
-    public MenuDTO(UUID restaurantId, String name, String description, Double price, Boolean availableInRestaurantOnly) {
+    public MenuDTO(UUID restaurantId, String name, String description, Double price,
+            Boolean availableInRestaurantOnly) {
         this.restaurantId = restaurantId;
         this.name = name;
         this.description = description;
         this.price = price;
         this.availableInRestaurantOnly = availableInRestaurantOnly;
     }
-
 
 }
