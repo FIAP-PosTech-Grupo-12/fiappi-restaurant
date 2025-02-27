@@ -37,8 +37,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 .orElse("");
 
         var decodedJWT = jwtProvider.validateAccessToken(token);
-        log.info("Subject JWT: " + decodedJWT.getSubject());
-
 
         if (decodedJWT != null && Instant.now().isBefore(decodedJWT.getExpiresAtAsInstant())) {
 
