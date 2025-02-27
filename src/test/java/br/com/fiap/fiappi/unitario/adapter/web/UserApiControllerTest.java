@@ -1,9 +1,9 @@
-package br.com.fiap.fiappi.unitario.core.user.controller;
+package br.com.fiap.fiappi.unitario.adapter.web;
 
+import br.com.fiap.fiappi.adapter.web.UserApiController;
 import br.com.fiap.fiappi.core.user.controller.UserController;
 import br.com.fiap.fiappi.core.user.dto.UpdateRoleUserDTO;
 import br.com.fiap.fiappi.core.user.enums.RoleName;
-import br.com.fiap.fiappi.core.user.usecase.UserUpdateRuleUseCase;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,15 +15,15 @@ import java.util.UUID;
 
 import static org.mockito.Mockito.*;
 
-class UserControllerTest {
+class UserApiControllerTest {
 
     AutoCloseable mock;
 
     @Mock
-    private UserUpdateRuleUseCase updateRestaurantUseCase;
+    private UserController userController;
 
     @InjectMocks
-    private UserController userController;
+    private UserApiController userApiController;
 
     @BeforeEach
     void setUp() {
@@ -39,9 +39,9 @@ class UserControllerTest {
     void shouldUpdateRoleUser() {
         UpdateRoleUserDTO dto = new UpdateRoleUserDTO(UUID.randomUUID(), RoleName.ROLE_CUSTOMER);
 
-        userController.updateRoleUser(dto);
+        userApiController.updateRule(dto);
 
-        verify(updateRestaurantUseCase, times(1)).updateRoleUser(any());
+        verify(userController, times(1)).updateRoleUser(any());
     }
 
 
