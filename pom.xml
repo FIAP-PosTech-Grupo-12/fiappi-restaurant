@@ -97,7 +97,7 @@
         <dependency>
             <groupId>org.jacoco</groupId>
             <artifactId>jacoco-maven-plugin</artifactId>
-            <version>0.8.8</version>
+            <version>0.8.12</version>
         </dependency>
 
 
@@ -114,13 +114,13 @@
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <configuration>
                     <excludes>
-                        <exclude>*/site/jacoco/*</exclude>
-                        <exclude>*/config/*</exclude>
-                        <exclude>*/entity/*</exclude>
-                        <exclude>*/repository/*</exclude>
+                        <exclude>**/site/jacoco/**</exclude>
+                        <exclude>**/config/**</exclude>
+                        <exclude>**/entity/**</exclude>
+                        <exclude>**/repository/**</exclude>
                     </excludes>
                 </configuration>
-                <version>0.8.8</version> <!-- Verifique a versão mais recente -->
+                <version>0.8.12</version> <!-- Verifique a versão mais recente -->
                 <executions>
                     <execution>
                         <id>prepare-agent</id>

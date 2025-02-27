@@ -111,8 +111,8 @@ public class RestaurantApiIntegrationTest {
         mvc.perform(request)
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.length()", is(2)))
-                .andExpect(jsonPath("$[0].name", is("Pizzaria Delícia")))
-                .andExpect(jsonPath("$[1].name", is("Restaurante Sabor Caseiro")));
+                .andExpect(jsonPath("$[0].id", is("c5a8d2e4-5b9c-4f3a-88b5-6e7d4f5a9c8d")))
+                .andExpect(jsonPath("$[1].id", is("b28a1c34-4a6b-4e3d-a70f-5d2f1a5c6e3a")));
     }
 
     @Test
