@@ -67,14 +67,16 @@ public class MenuApiIntegrationTest {
         @Test
         void shouldCreateMenu() throws Exception {
                 UUID restaurantId = UUID.fromString("b28a1c34-4a6b-4e3d-a70f-5d2f1a5c6e3a");
-                MenuDTO dto = new MenuDTO(restaurantId, "Test Menu", "Test Description", 12.50, true);
-                String dtoJson = asJsonString(dto);
                 MockMultipartFile file = new MockMultipartFile("file", "menu.txt", MediaType.TEXT_PLAIN_VALUE,
                                 "dummy content".getBytes());
 
                 MockHttpServletRequestBuilder request = MockMvcRequestBuilders.multipart(URL_BASE)
                                 .file(file)
-                                .param("dto", dtoJson);
+                                .param("restaurantId", restaurantId.toString())
+                                .param("name", "Test Menu")
+                                .param("description", "Test Description")
+                                .param("price", "12.50")
+                                .param("availableInRestaurantOnly", "true");
 
                 mvc.perform(request)
                                 .andExpect(status().isCreated());

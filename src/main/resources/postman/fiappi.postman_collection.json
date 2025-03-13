@@ -57,7 +57,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwOi8vYXBwOjgwODAiLCJzdWIiOiJkaWVnb19hY3J1eiIsInR5cGUiOiJhY2Nlc3NUb2tlbiIsImV4cCI6MTc0MDM4OTk3NH0.BgUrHSxjd2Sp_hu90PeQzgrwICvx_fZouv39VnA_S7U",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwOi8vcG9zdGdyZXNxbDo4MDgwIiwic3ViIjoiZGllZ29fYWNydXoiLCJ0eXBlIjoiYWNjZXNzVG9rZW4iLCJleHAiOjE3NDE5MDc3NzZ9.WwA8v3OXlBiZuRDdpqn2_UqC1Mb-jaKb-mXIQ7iMros",
 									"type": "string"
 								}
 							]
@@ -66,7 +66,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\" : \"Diegos Massa\",\n    \"address\" : \"Rua da Comida\",\n    \"kitchenType\" : \"INDUSTRIAL\",\n    \"openingHours\" : \"7-22\",\n    \"ownerId\" : \"514de143-99f6-49ce-b5ca-08d5b1fb2581\"\n    \n}",
+							"raw": "{\n    \"name\" : \"Diegos Massa\",\n    \"address\" : \"Rua da Comida\",\n    \"kitchenType\" : \"INDUSTRIAL\",\n    \"openingHours\" : \"7-22\",\n    \"ownerId\" : \"aa38ad3c-1f0f-4bdc-98e2-5ca7211f64eb\"\n    \n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -335,7 +335,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwOi8vYXBwOjgwODAiLCJzdWIiOiJkaWVnb19hY3J1eiIsInR5cGUiOiJhY2Nlc3NUb2tlbiIsImV4cCI6MTc0MDM5MDE0Nn0.HF3fPj23tG3RmT7oA9pXKyxey9Gb4kDlV7CXoylDJGA",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwOi8vcG9zdGdyZXNxbDo4MDgwIiwic3ViIjoiZGllZ29fYWNydXoiLCJ0eXBlIjoiYWNjZXNzVG9rZW4iLCJleHAiOjE3NDE5MDgxNjB9._91ujiw-Kq7c19Gh3OX2t-ceLCNHAPAB4qqQ2wiyEhA",
 									"type": "string"
 								}
 							]
@@ -351,8 +351,28 @@
 									"src": "/home/diego/Imagens/macarrao.jpg"
 								},
 								{
-									"key": "dto",
-									"value": "{\n    \"restaurantId\" : \"d02f18d4-dad3-4b0a-b765-9f5b521fe745\",\n    \"name\" : \"macarronesDiego\",\n    \"description\" : \"macarrao mais gostoso do brasil\",\n    \"price\" : 10.5,\n    \"availableInRestaurantOnly\" : true\n}",
+									"key": "restaurantId",
+									"value": "e0f1e644-e99b-4f68-a647-709fb50828e8",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "macarronesDiego",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "macarrao mais gostoso do brasil",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "10.5",
+									"type": "text"
+								},
+								{
+									"key": "availableInRestaurantOnly",
+									"value": "true",
 									"type": "text"
 								}
 							]

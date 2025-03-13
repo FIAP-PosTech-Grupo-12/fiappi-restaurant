@@ -37,7 +37,11 @@ public class MenuApiController {
 
     @PostMapping
     public ResponseEntity<Void> create(@RequestParam MultipartFile file,
-                                       @RequestParam String dto,
+                                       @RequestParam String restaurantId,
+                                       @RequestParam String name,
+                                       @RequestParam String description,
+                                       @RequestParam String price,
+                                       @RequestParam String availableInRestaurantOnly,
                                        @AuthenticationPrincipal User userRequest) {
 
         byte[] bytes;
@@ -47,7 +51,7 @@ public class MenuApiController {
             throw new MenuConverterException("Error to get bytes");
         }
 
-        menuController.create(bytes, dto, userRequest.getId());
+        menuController.create(bytes, restaurantId, name, description, price, availableInRestaurantOnly, userRequest.getId());
         return ResponseEntity.status(HttpStatus.CREATED).build();
 
     }

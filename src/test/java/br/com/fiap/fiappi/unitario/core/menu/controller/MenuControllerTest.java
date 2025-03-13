@@ -43,12 +43,12 @@ class MenuControllerTest {
     @Test
     void testCreate() {
         byte[] bytes = "test bytes".getBytes();
-        String dto = "{\"name\":\"Test Menu\"}";
         UUID userRequestId = UUID.randomUUID();
+        UUID idRestaurant = UUID.randomUUID();
 
-        menuController.create(bytes, dto, userRequestId);
+        menuController.create(bytes, idRestaurant.toString(), "nameMenu", "description", "10.00", "true", userRequestId);
 
-        verify(createMenuUseCase, times(1)).create(bytes, dto, userRequestId);
+        verify(createMenuUseCase, times(1)).create(bytes, idRestaurant.toString(), "nameMenu", "description", "10.00", "true", userRequestId);
     }
 
     @Test

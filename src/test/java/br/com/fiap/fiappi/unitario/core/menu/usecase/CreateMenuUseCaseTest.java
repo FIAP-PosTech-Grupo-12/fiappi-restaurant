@@ -43,18 +43,13 @@ public class CreateMenuUseCaseTest {
     @Test
     void shouldCreateMenu(){
         UUID idRestaurant = UUID.randomUUID();
-        MenuDTO dto = new MenuDTO(idRestaurant, "nameMenu", "Description", 10.00, true);
-
-        Gson gson = new Gson();
-
-        String dtoString = gson.toJson(dto);
 
         byte[] bytes = new byte[0];
 
         when(imageGateway.create(any(), any())).thenReturn("/path");
         when(restaurantGateway.findBy(idRestaurant)).thenReturn(new RestaurantMenuDTO(idRestaurant, "name", "address", KitchenTypeEnum.FAST_FOOD, "7-22", UUID.randomUUID(), new ArrayList<>()));
 
-        createMenu.create(bytes, dtoString, UUID.randomUUID());
+        createMenu.create(bytes, idRestaurant.toString(), "nameMenu", "description", "10.00", "true", UUID.randomUUID());
 
         verify(imageGateway, times(1)).create(any(), any());
         verify(menuGateway, times(1)).create(any());

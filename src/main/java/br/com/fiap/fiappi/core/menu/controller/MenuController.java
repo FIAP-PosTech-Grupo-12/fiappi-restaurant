@@ -11,6 +11,7 @@ import br.com.fiap.fiappi.core.menu.usecase.DeleteMenuUseCase;
 import br.com.fiap.fiappi.core.menu.usecase.FindMenuByIdRestaurantUseCase;
 import br.com.fiap.fiappi.core.menu.usecase.UpdateMenuUseCase;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Component
 @RequiredArgsConstructor
@@ -22,9 +23,10 @@ public class MenuController {
     private final UpdateMenuUseCase updateMenuUseCase;
 
 
-    public void create(byte[] bytes, String dto, UUID userRequestId) {
+    public void create(byte[] bytes, String restaurantId, String name, String description,
+                       String price, String availableInRestaurantOnly, UUID userRequestId) {
 
-        createMenuUseCase.create(bytes, dto, userRequestId);
+        createMenuUseCase.create(bytes, restaurantId, name, description, price, availableInRestaurantOnly, userRequestId);
     }
 
 

@@ -24,21 +24,20 @@ public class CreateMenuUseCaseImpl implements CreateMenuUseCase{
     private final RestaurantGateway restaurantGateway;
 
     @Override
-    public void create(byte[] bytes, String dto, UUID userRequestId) {
+    public void create(byte[] bytes, String restaurantId, String name, String description,
+                       String price, String availableInRestaurantOnly, UUID userRequestId) {
 
-        Gson gson = new Gson();
+        UUID uuidRestaurant = UUID.fromString(restaurantId);
 
-        MenuDTO menuDTO = gson.fromJson(dto, MenuDTO.class);
+        restaurantGateway.findBy(uuidRestaurant);
 
-        restaurantGateway.findBy(menuDTO.getRestaurantId());
+        String pathImage = imageGateway.create(bytes, name);
 
-        String pathImage = imageGateway.create(bytes, menuDTO.getName());
-
-        Menu menu = new Menu(new Restaurant(menuDTO.getRestaurantId()),
-                menuDTO.getName(),
-                menuDTO.getDescription(),
-                menuDTO.getPrice(),
-                menuDTO.getAvailableInRestaurantOnly(),
+        Menu menu = new Menu(new Restaurant(uuidRestaurant),
+                name,
+                description,
+                Double.valueOf(price),
+                Boolean.valueOf(availableInRestaurantOnly),
                 pathImage,
                 userRequestId,
                 LocalDateTime.now(),
