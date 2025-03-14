@@ -1,22 +1,39 @@
 version: '3.7'
 services:
-  app1:
+  app:
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - "8081:8081"
+    depends_on:
+      postgresql:
+        condition: service_healthy
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresql:5432/fiappi
       - SPRING_DATASOURCE_USERNAME=fiappi
       - SPRING_DATASOURCE_PASSWORD=fiappi
-      - API_SECURITY_SERVER_URL=http://app:8080
-      - API_SECURITY_TOKEN_SECRET=my-secret-key
     networks:
       - springboot-postgres-network
+  postgresql:
+    image: postgres:15-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB:fiappi
+      - POSTGRES_USER=fiappi
+      - POSTGRES_PASSWORD=fiappi
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - springboot-postgres-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      retries: 10
+      interval: 10s
+      timeout: 5s
 volumes:
   postgres-data:
 networks:
   springboot-postgres-network:
-    external: true
-
+    name: springboot-postgres-network
