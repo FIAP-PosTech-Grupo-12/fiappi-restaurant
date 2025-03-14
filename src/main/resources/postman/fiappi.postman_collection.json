@@ -57,7 +57,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwOi8vcG9zdGdyZXNxbDo4MDgwIiwic3ViIjoiZGllZ29fYWNydXoiLCJ0eXBlIjoiYWNjZXNzVG9rZW4iLCJleHAiOjE3NDE5MDc3NzZ9.WwA8v3OXlBiZuRDdpqn2_UqC1Mb-jaKb-mXIQ7iMros",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwOi8vcG9zdGdyZXNxbDo4MDgwIiwic3ViIjoiZGllZ29fYWNydXoiLCJ0eXBlIjoiYWNjZXNzVG9rZW4iLCJleHAiOjE3NDE5ODczMDZ9.FsqGmu1hhQSCYvx5VDAsWAmP7AVj5KXDHWBgq2J5-8A",
 									"type": "string"
 								}
 							]
@@ -66,7 +66,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\" : \"Diegos Massa\",\n    \"address\" : \"Rua da Comida\",\n    \"kitchenType\" : \"INDUSTRIAL\",\n    \"openingHours\" : \"7-22\",\n    \"ownerId\" : \"aa38ad3c-1f0f-4bdc-98e2-5ca7211f64eb\"\n    \n}",
+							"raw": "{\n    \"name\" : \"Diegos Massa\",\n    \"address\" : \"Rua da Comida\",\n    \"kitchenType\" : \"INDUSTRIAL\",\n    \"openingHours\" : \"7-22\",\n    \"ownerId\" : \"71a9dafd-26b0-483c-8bec-5546f2ae13d7\"\n    \n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -207,11 +207,21 @@
 				{
 					"name": "New Request",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwOi8vcG9zdGdyZXNxbDo4MDgwIiwic3ViIjoiZGllZ29fYWNydXoiLCJ0eXBlIjoiYWNjZXNzVG9rZW4iLCJleHAiOjE3NDE5NTE0ODN9.J-UZabrw67KKVHdofqILvbN_xqCPW7a9ilm_ewp-k-4",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PATCH",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": \"87fa567e-e716-4844-9565-22e7f385a426\",\n    \"roleName\": \"ROLE_ADMINISTRATOR\"\n}",
+							"raw": "{\n    \"id\": \"71a9dafd-26b0-483c-8bec-5546f2ae13d7\",\n    \"roleName\": \"ROLE_ADMINISTRATOR\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -219,12 +229,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/v2/users",
+							"raw": "http://localhost:8081/v2/users",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
 								"v2",
 								"users"
@@ -248,14 +258,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/v1/users",
+							"raw": "http://localhost:8081/v2/users",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
-								"v1",
+								"v2",
 								"users"
 							]
 						}
@@ -277,14 +287,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/v1/login",
+							"raw": "http://localhost:8081/v2/login",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
-								"v1",
+								"v2",
 								"login"
 							]
 						}
@@ -307,14 +317,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/v1/users/4ad80ed4-6157-4682-87a2-7dc300874878",
+							"raw": "http://localhost:8081/v2/users/4ad80ed4-6157-4682-87a2-7dc300874878",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8080",
+							"port": "8081",
 							"path": [
-								"v1",
+								"v2",
 								"users",
 								"4ad80ed4-6157-4682-87a2-7dc300874878"
 							]
@@ -335,7 +345,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwOi8vcG9zdGdyZXNxbDo4MDgwIiwic3ViIjoiZGllZ29fYWNydXoiLCJ0eXBlIjoiYWNjZXNzVG9rZW4iLCJleHAiOjE3NDE5MDgxNjB9._91ujiw-Kq7c19Gh3OX2t-ceLCNHAPAB4qqQ2wiyEhA",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwOi8vcG9zdGdyZXNxbDo4MDgwIiwic3ViIjoiZGllZ29fYWNydXoiLCJ0eXBlIjoiYWNjZXNzVG9rZW4iLCJleHAiOjE3NDE5ODczMDZ9.FsqGmu1hhQSCYvx5VDAsWAmP7AVj5KXDHWBgq2J5-8A",
 									"type": "string"
 								}
 							]
@@ -352,7 +362,7 @@
 								},
 								{
 									"key": "restaurantId",
-									"value": "e0f1e644-e99b-4f68-a647-709fb50828e8",
+									"value": "a9b8f9d9-54a0-46b7-8036-c746124fc9e4",
 									"type": "text"
 								},
 								{
