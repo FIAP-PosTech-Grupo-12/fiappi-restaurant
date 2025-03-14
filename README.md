@@ -8,6 +8,11 @@ Este projeto faz parte do Pós Graduação Tech Arquitetura Java da [FIAP](https
 
 ## Funcionalidades
 
+- Registrar novos usuários com dados como nome, email, login, senha e endereço. 
+- Modificar informações cadastradas dos usuários. 
+- Excluir permanentemente um usuário do sistema. 
+- Validar login, verificando se login e senha são válidos, retornando o token para uso da API. 
+- Atualizar a senha do usuário.
 - Atualizar tipo de usuario.
 - Adicionar, atualizar, remover, recuperar restaurantes.
 - Adicionar, atualizar, remover, recuperar menus.
@@ -23,6 +28,7 @@ Este projeto faz parte do Pós Graduação Tech Arquitetura Java da [FIAP](https
 - Lombok
 - Docker e Docker Compose
 - Documentação Postman e Swagger/OpenAPI
+- JaCoCo
 
 ---
 
@@ -32,7 +38,6 @@ Este projeto faz parte do Pós Graduação Tech Arquitetura Java da [FIAP](https
 
 - Docker e Docker Compose instalados
 - JDK 17 ou superior
-- Rodar projeto da primeira fase para obtenção do token
 
 ### Passos
 
@@ -53,7 +58,7 @@ Este projeto faz parte do Pós Graduação Tech Arquitetura Java da [FIAP](https
 
 ## Utilização
 
-Para utilização dos endpoints desse projeto, é necessário mandar token no Bearer Token do Postman. Para obtenção do token é necessario rodar o projeto da FASE 1 para autenticação. URL FASE 1: [https://github.com/FIAP-PosTech-Grupo-12/fiappi]
+Para utilização dos endpoints desse projeto, é necessário mandar token no Bearer Token do Postman. Para obtenção do token, é necessario criar um usuário e se autenticar no endpoint de login.
 
 A documentação da API pode ser acessada por meio do Swagger UI, gerado automaticamente pelo Springdoc OpenAPI.
 
@@ -69,7 +74,14 @@ Alternativamente, pode-se utilizar uma coleção de requisições, na qual é fo
 
 | Método | Endpoint                  | Descrição                            |
 |--------|---------------------------|--------------------------------------|
-| POST   | `/v2/users`               | Atualização tipo de usuário          |
+| POST   | `/v2/login`               | Validar login e senha                                                             |
+| POST   | `/v2/users`               | Criação de usuário (Apenas administrador)                                         |
+| GET    | `/v2/users/{id}`          | Buscar todos os usuários (Administrador retorna todos, usuário retorna ele mesmo) |
+| GET    | `/v2/users/{id}`          | Buscar usuário pelo ID (Administrador ou próprio usuário)                         |
+| PATCH  | `/v2/users/{id}`          | Atualizar dados do usuário (Administrador ou próprio usuário)                     |
+| PATCH  | `/v2/users/{id}/password` | Atualizar senha do usuário (Administrador ou próprio usuário)                     |
+| DELETE | `/v2/users/{id}`          | Excluir usuário (Administrador ou próprio usuário)                                |
+| PATCH  | `/v2/users`               | Atualização tipo de usuário          |
 | POST   | `/v1/restaurant/{id}`     | Cria um restaurante                  |
 | GET    | `/v1/restaurant/{id}`     | Buscar restaurante pelo ID           |
 | GET    | `/v1/restaurant`          | Buscar todos restaurantes            |
