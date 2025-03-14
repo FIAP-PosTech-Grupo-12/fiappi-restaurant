@@ -75,7 +75,7 @@ Alternativamente, pode-se utilizar uma coleção de requisições, na qual é fo
 | Método | Endpoint                  | Descrição                            |
 |--------|---------------------------|--------------------------------------|
 | POST   | `/v2/login`               | Validar login e senha                                                             |
-| POST   | `/v2/users`               | Criação de usuário (Apenas administrador)                                         |
+| POST   | `/v2/users`               | Criação de usuário                                                                |
 | GET    | `/v2/users/{id}`          | Buscar todos os usuários (Administrador retorna todos, usuário retorna ele mesmo) |
 | GET    | `/v2/users/{id}`          | Buscar usuário pelo ID (Administrador ou próprio usuário)                         |
 | PATCH  | `/v2/users/{id}`          | Atualizar dados do usuário (Administrador ou próprio usuário)                     |
