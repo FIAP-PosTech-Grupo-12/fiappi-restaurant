@@ -38,7 +38,7 @@ public class JwtProvider {
     }
 
     public String generateAccessToken(String subject) {
-        final Instant expiration = Instant.now().plusSeconds(360);
+        final Instant expiration = Instant.now().plusSeconds(36000);
 
         try {
             return JWT.create()

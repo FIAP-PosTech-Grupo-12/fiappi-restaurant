@@ -40,7 +40,7 @@ public class UserJpaGateway implements UserGateway {
         var userEntity = new br.com.fiap.fiappi.adapter.database.jpa.user.entity.User(user.getName(),
                 user.getEmail(),
                 user.getLogin(),
-                user.getPassword(),
+                passwordEncoder.encode(user.getPassword()),
                 user.getUpdatedDate(),
                 user.getAddress(),
                 user.getRole());
