@@ -1,31 +1,5 @@
 package br.com.fiap.fiappi.unitario.adapter.database.jpa.menu;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.argThat;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
-import java.time.LocalDateTime;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
-
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-
 import br.com.fiap.fiappi.adapter.database.jpa.menu.MenuJpaGateway;
 import br.com.fiap.fiappi.adapter.database.jpa.menu.entity.MenuEntity;
 import br.com.fiap.fiappi.adapter.database.jpa.menu.repository.MenuRepository;
@@ -35,6 +9,20 @@ import br.com.fiap.fiappi.core.menu.domain.Menu;
 import br.com.fiap.fiappi.core.menu.dto.MenuDTO;
 import br.com.fiap.fiappi.core.menu.exception.MenuNotFoundException;
 import br.com.fiap.fiappi.core.restaurant.exception.RestaurantNotFoundException;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
+import java.time.LocalDateTime;
+import java.util.*;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.argThat;
+import static org.mockito.Mockito.*;
 
 class MenuJpaGatewayTest {
 

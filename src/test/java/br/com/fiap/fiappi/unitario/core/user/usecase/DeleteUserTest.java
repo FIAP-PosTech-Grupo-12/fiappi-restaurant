@@ -1,6 +1,5 @@
 package br.com.fiap.fiappi.unitario.core.user.usecase;
 
-import br.com.fiap.fiappi.core.user.dto.ChangeUserPasswordDto;
 import br.com.fiap.fiappi.core.user.gateway.UserGateway;
 import br.com.fiap.fiappi.core.user.usecase.DeleteUserUseCaseImpl;
 import org.junit.jupiter.api.AfterEach;

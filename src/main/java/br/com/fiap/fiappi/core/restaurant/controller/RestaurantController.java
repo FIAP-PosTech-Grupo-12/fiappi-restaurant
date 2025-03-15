@@ -3,7 +3,6 @@ package br.com.fiap.fiappi.core.restaurant.controller;
 import br.com.fiap.fiappi.core.restaurant.dto.RestaurantDTO;
 import br.com.fiap.fiappi.core.restaurant.dto.RestaurantMenuDTO;
 import br.com.fiap.fiappi.core.restaurant.usecase.*;
-import br.com.fiap.fiappi.adapter.database.jpa.user.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;

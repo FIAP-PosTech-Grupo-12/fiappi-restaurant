@@ -1,17 +1,15 @@
 package br.com.fiap.fiappi.core.menu.controller;
 
-import java.util.List;
-import java.util.UUID;
-
-import org.springframework.stereotype.Component;
-
 import br.com.fiap.fiappi.core.menu.dto.MenuDTO;
 import br.com.fiap.fiappi.core.menu.usecase.CreateMenuUseCase;
 import br.com.fiap.fiappi.core.menu.usecase.DeleteMenuUseCase;
 import br.com.fiap.fiappi.core.menu.usecase.FindMenuByIdRestaurantUseCase;
 import br.com.fiap.fiappi.core.menu.usecase.UpdateMenuUseCase;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor

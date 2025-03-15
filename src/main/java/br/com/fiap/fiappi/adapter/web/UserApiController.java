@@ -1,9 +1,9 @@
 package br.com.fiap.fiappi.adapter.web;
 
+import br.com.fiap.fiappi.core.user.controller.UserController;
 import br.com.fiap.fiappi.core.user.dto.ChangeUserPasswordDto;
 import br.com.fiap.fiappi.core.user.dto.CreateUserDto;
 import br.com.fiap.fiappi.core.user.dto.UpdateRoleUserDTO;
-import br.com.fiap.fiappi.core.user.controller.UserController;
 import br.com.fiap.fiappi.core.user.dto.UpdateUserDto;
 import br.com.fiap.fiappi.core.user.projection.UserDetailedProjection;
 import br.com.fiap.fiappi.core.user.projection.UserProjection;

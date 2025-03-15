@@ -1,7 +1,6 @@
 package br.com.fiap.fiappi.core.menu.domain;
 
 import br.com.fiap.fiappi.core.restaurant.domain.Restaurant;
-import br.com.fiap.fiappi.core.restaurant.enums.KitchenTypeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

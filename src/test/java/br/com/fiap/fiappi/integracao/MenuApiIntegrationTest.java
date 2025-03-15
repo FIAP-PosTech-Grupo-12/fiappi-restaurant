@@ -1,16 +1,11 @@
 package br.com.fiap.fiappi.integracao;
 
-import java.io.File;
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.UUID;
-
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import br.com.fiap.fiappi.adapter.database.jpa.user.entity.User;
+import br.com.fiap.fiappi.core.menu.dto.MenuDTO;
+import br.com.fiap.fiappi.core.user.enums.RoleName;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.transaction.Transactional;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -27,14 +22,11 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.File;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.UUID;
 
-import br.com.fiap.fiappi.adapter.database.jpa.user.entity.User;
-import br.com.fiap.fiappi.core.menu.dto.MenuDTO;
-import br.com.fiap.fiappi.core.user.enums.RoleName;
-import jakarta.transaction.Transactional;
-import static org.hamcrest.CoreMatchers.is;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(SpringExtension.class)

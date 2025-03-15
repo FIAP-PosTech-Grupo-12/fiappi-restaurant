@@ -1,11 +1,11 @@
 package br.com.fiap.fiappi.unitario.adapter.web;
 
+import br.com.fiap.fiappi.adapter.database.jpa.user.entity.User;
 import br.com.fiap.fiappi.adapter.web.RestaurantApiController;
 import br.com.fiap.fiappi.core.restaurant.controller.RestaurantController;
 import br.com.fiap.fiappi.core.restaurant.dto.RestaurantDTO;
 import br.com.fiap.fiappi.core.restaurant.dto.RestaurantMenuDTO;
 import br.com.fiap.fiappi.core.restaurant.enums.KitchenTypeEnum;
-import br.com.fiap.fiappi.adapter.database.jpa.user.entity.User;
 import br.com.fiap.fiappi.core.user.enums.RoleName;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,7 +22,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 

@@ -1,8 +1,8 @@
 package br.com.fiap.fiappi.core.user.usecase;
 
 import br.com.fiap.fiappi.core.user.dto.UpdateRoleUserDTO;
-import br.com.fiap.fiappi.core.user.gateway.UserGateway;
 import br.com.fiap.fiappi.core.user.enums.RoleName;
+import br.com.fiap.fiappi.core.user.gateway.UserGateway;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

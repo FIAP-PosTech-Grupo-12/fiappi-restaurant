@@ -3,7 +3,9 @@ package br.com.fiap.fiappi.adapter.database.jpa.restaurant.entity;
 import br.com.fiap.fiappi.adapter.database.jpa.menu.entity.MenuEntity;
 import br.com.fiap.fiappi.core.restaurant.enums.KitchenTypeEnum;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -11,7 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name="restaurants")
+@Table(name = "restaurants")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

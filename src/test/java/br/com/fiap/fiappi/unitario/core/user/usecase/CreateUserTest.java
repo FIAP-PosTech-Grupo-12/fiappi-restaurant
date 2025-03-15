@@ -1,7 +1,6 @@
 package br.com.fiap.fiappi.unitario.core.user.usecase;
 
 import br.com.fiap.fiappi.core.user.dto.CreateUserDto;
-import br.com.fiap.fiappi.core.user.dto.UpdateRoleUserDTO;
 import br.com.fiap.fiappi.core.user.enums.RoleName;
 import br.com.fiap.fiappi.core.user.gateway.UserGateway;
 import br.com.fiap.fiappi.core.user.usecase.CreateUserUseCaseImpl;
@@ -11,8 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-
-import java.util.UUID;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;

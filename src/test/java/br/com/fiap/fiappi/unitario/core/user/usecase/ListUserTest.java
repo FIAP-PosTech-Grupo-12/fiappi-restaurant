@@ -1,9 +1,6 @@
 package br.com.fiap.fiappi.unitario.core.user.usecase;
 
-import br.com.fiap.fiappi.core.user.dto.CreateUserDto;
-import br.com.fiap.fiappi.core.user.enums.RoleName;
 import br.com.fiap.fiappi.core.user.gateway.UserGateway;
-import br.com.fiap.fiappi.core.user.usecase.FindAllUsersUseCase;
 import br.com.fiap.fiappi.core.user.usecase.FindAllUsersUseCaseImpl;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

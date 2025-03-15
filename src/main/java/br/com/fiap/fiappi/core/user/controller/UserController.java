@@ -1,14 +1,9 @@
 package br.com.fiap.fiappi.core.user.controller;
 
-import br.com.fiap.fiappi.core.user.dto.CreateUserDto;
-import br.com.fiap.fiappi.core.user.dto.UpdateRoleUserDTO;
-import br.com.fiap.fiappi.core.user.usecase.*;
-import br.com.fiap.fiappi.core.user.dto.LoginUserDto;
-import br.com.fiap.fiappi.core.user.dto.TokenUserDto;
-import br.com.fiap.fiappi.core.user.dto.ChangeUserPasswordDto;
-import br.com.fiap.fiappi.core.user.dto.UpdateUserDto;
+import br.com.fiap.fiappi.core.user.dto.*;
 import br.com.fiap.fiappi.core.user.projection.UserDetailedProjection;
 import br.com.fiap.fiappi.core.user.projection.UserProjection;
+import br.com.fiap.fiappi.core.user.usecase.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

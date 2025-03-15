@@ -1,12 +1,10 @@
 package br.com.fiap.fiappi.core.menu.usecase;
 
 import br.com.fiap.fiappi.core.menu.domain.Menu;
-import br.com.fiap.fiappi.core.menu.dto.MenuDTO;
 import br.com.fiap.fiappi.core.menu.gateway.ImageGateway;
 import br.com.fiap.fiappi.core.menu.gateway.MenuGateway;
 import br.com.fiap.fiappi.core.restaurant.domain.Restaurant;
 import br.com.fiap.fiappi.core.restaurant.gateway.RestaurantGateway;
-import com.google.gson.Gson;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

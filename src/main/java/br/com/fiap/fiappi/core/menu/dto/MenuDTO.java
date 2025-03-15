@@ -1,12 +1,11 @@
 package br.com.fiap.fiappi.core.menu.dto;
 
-import java.util.UUID;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.UUID;
 
 @NoArgsConstructor
 @Data

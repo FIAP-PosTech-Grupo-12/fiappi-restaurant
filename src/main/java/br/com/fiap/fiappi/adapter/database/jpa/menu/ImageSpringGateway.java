@@ -61,7 +61,7 @@ public class ImageSpringGateway implements ImageGateway {
 
         Map<UUID, byte[]> mapIdByBytes = new HashMap();
 
-        mapIdByPhotoPath.forEach((id, photoPath) ->{
+        mapIdByPhotoPath.forEach((id, photoPath) -> {
             Path pathWithName = Paths.get("src/main/resources" + photoPath);
 
             byte[] bytes;

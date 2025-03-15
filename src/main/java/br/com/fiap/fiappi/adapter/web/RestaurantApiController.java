@@ -1,8 +1,8 @@
 package br.com.fiap.fiappi.adapter.web;
 
+import br.com.fiap.fiappi.adapter.database.jpa.user.entity.User;
 import br.com.fiap.fiappi.core.restaurant.controller.RestaurantController;
 import br.com.fiap.fiappi.core.restaurant.dto.RestaurantDTO;
-import br.com.fiap.fiappi.adapter.database.jpa.user.entity.User;
 import br.com.fiap.fiappi.core.restaurant.dto.RestaurantMenuDTO;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;

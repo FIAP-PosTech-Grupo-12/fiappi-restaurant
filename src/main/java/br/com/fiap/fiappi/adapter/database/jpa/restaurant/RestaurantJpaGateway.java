@@ -88,11 +88,11 @@ public class RestaurantJpaGateway implements RestaurantGateway {
                         r.getOwnerId(),
                         r.getMenus().stream()
                                 .map(m -> new MenuDTO(
-                                                r.getId(),
-                                                m.getName(),
-                                                m.getDescription(),
-                                                m.getPrice(),
-                                                m.getAvailableInRestaurantOnly()
+                                        r.getId(),
+                                        m.getName(),
+                                        m.getDescription(),
+                                        m.getPrice(),
+                                        m.getAvailableInRestaurantOnly()
                                 ))
                                 .toList()))
                 .toList();

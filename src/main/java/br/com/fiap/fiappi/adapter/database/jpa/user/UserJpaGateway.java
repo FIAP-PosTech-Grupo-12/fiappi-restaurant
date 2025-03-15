@@ -1,15 +1,15 @@
 package br.com.fiap.fiappi.adapter.database.jpa.user;
 
+import br.com.fiap.fiappi.adapter.database.jpa.user.repository.UserRepository;
 import br.com.fiap.fiappi.config.security.providers.JwtProvider;
 import br.com.fiap.fiappi.config.security.service.AuthenticationService;
 import br.com.fiap.fiappi.core.user.domain.User;
-import br.com.fiap.fiappi.adapter.database.jpa.user.repository.UserRepository;
 import br.com.fiap.fiappi.core.user.dto.ChangeUserPasswordDto;
 import br.com.fiap.fiappi.core.user.dto.LoginUserDto;
 import br.com.fiap.fiappi.core.user.dto.TokenUserDto;
+import br.com.fiap.fiappi.core.user.enums.RoleName;
 import br.com.fiap.fiappi.core.user.exception.UserLoginAlreadyExistsException;
 import br.com.fiap.fiappi.core.user.gateway.UserGateway;
-import br.com.fiap.fiappi.core.user.enums.RoleName;
 import br.com.fiap.fiappi.core.user.projection.UserDetailedProjection;
 import br.com.fiap.fiappi.core.user.projection.UserProjection;
 import jakarta.transaction.Transactional;

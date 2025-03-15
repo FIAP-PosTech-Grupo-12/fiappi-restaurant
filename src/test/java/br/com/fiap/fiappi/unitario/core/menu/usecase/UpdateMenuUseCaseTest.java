@@ -1,22 +1,19 @@
 package br.com.fiap.fiappi.unitario.core.menu.usecase;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
-import java.util.UUID;
-
+import br.com.fiap.fiappi.core.menu.dto.MenuDTO;
+import br.com.fiap.fiappi.core.menu.gateway.ImageGateway;
+import br.com.fiap.fiappi.core.menu.gateway.MenuGateway;
+import br.com.fiap.fiappi.core.menu.usecase.UpdateMenuUseCaseImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import br.com.fiap.fiappi.core.menu.dto.MenuDTO;
-import br.com.fiap.fiappi.core.menu.gateway.ImageGateway;
-import br.com.fiap.fiappi.core.menu.gateway.MenuGateway;
-import br.com.fiap.fiappi.core.menu.usecase.UpdateMenuUseCaseImpl;
+import java.util.UUID;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
 
 public class UpdateMenuUseCaseTest {
 

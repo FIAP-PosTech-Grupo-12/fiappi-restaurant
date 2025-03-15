@@ -3,13 +3,16 @@ package br.com.fiap.fiappi.adapter.database.jpa.menu.entity;
 import br.com.fiap.fiappi.adapter.database.jpa.restaurant.entity.RestaurantEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name="menu_items")
+@Table(name = "menu_items")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

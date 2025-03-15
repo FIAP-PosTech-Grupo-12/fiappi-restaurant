@@ -1,13 +1,11 @@
 package br.com.fiap.fiappi.unitario.core.menu.usecase;
 
-import br.com.fiap.fiappi.core.menu.dto.MenuDTO;
 import br.com.fiap.fiappi.core.menu.gateway.ImageGateway;
 import br.com.fiap.fiappi.core.menu.gateway.MenuGateway;
 import br.com.fiap.fiappi.core.menu.usecase.CreateMenuUseCaseImpl;
 import br.com.fiap.fiappi.core.restaurant.dto.RestaurantMenuDTO;
 import br.com.fiap.fiappi.core.restaurant.enums.KitchenTypeEnum;
 import br.com.fiap.fiappi.core.restaurant.gateway.RestaurantGateway;
-import com.google.gson.Gson;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
