@@ -1,5 +1,7 @@
 package br.com.fiap.fiappi.config.security.service;
 
+
+import br.com.fiap.fiappi.adapter.database.jpa.user.entity.User;
 import br.com.fiap.fiappi.core.user.enums.RoleName;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -26,7 +28,7 @@ public class AuthenticationService {
     }
 
     public String getAuthenticatedUserName() {
-        return (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return ((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getLogin();
     }
 
 }

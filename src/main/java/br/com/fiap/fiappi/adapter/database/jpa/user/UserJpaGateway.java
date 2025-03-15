@@ -7,6 +7,7 @@ import br.com.fiap.fiappi.adapter.database.jpa.user.repository.UserRepository;
 import br.com.fiap.fiappi.core.user.dto.ChangeUserPasswordDto;
 import br.com.fiap.fiappi.core.user.dto.LoginUserDto;
 import br.com.fiap.fiappi.core.user.dto.TokenUserDto;
+import br.com.fiap.fiappi.core.user.exception.UserLoginAlreadyExistsException;
 import br.com.fiap.fiappi.core.user.gateway.UserGateway;
 import br.com.fiap.fiappi.core.user.enums.RoleName;
 import br.com.fiap.fiappi.core.user.projection.UserDetailedProjection;
@@ -14,8 +15,6 @@ import br.com.fiap.fiappi.core.user.projection.UserProjection;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authorization.AuthorizationDecision;
-import org.springframework.security.authorization.AuthorizationDeniedException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -36,6 +35,10 @@ public class UserJpaGateway implements UserGateway {
     @Override
     @Transactional
     public void create(User user) {
+
+        userRepository.findByLogin(user.getLogin()).ifPresent(found -> {
+            throw new UserLoginAlreadyExistsException("User login already exists");
+        });
 
         var userEntity = new br.com.fiap.fiappi.adapter.database.jpa.user.entity.User(user.getName(),
                 user.getEmail(),
@@ -77,10 +80,9 @@ public class UserJpaGateway implements UserGateway {
 
         if (authenticationService.isAuthenticatedUserAdmin())
             return userRepository.findAllOrLoginNameUser(page, size, null);
-        else if (authenticationService.isAuthenticatedUser())
-            return userRepository.findAllOrLoginNameUser(page, size, authenticationService.getAuthenticatedUserName());
-        else
-            throw new AuthorizationDeniedException("Is not an administrator", new AuthorizationDecision(false));
+
+        return userRepository.findAllOrLoginNameUser(page, size, authenticationService.getAuthenticatedUserName());
+
     }
 
     @Override
