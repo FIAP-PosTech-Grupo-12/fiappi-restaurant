@@ -11,7 +11,6 @@ import br.com.fiap.fiappi.core.menu.usecase.DeleteMenuUseCase;
 import br.com.fiap.fiappi.core.menu.usecase.FindMenuByIdRestaurantUseCase;
 import br.com.fiap.fiappi.core.menu.usecase.UpdateMenuUseCase;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Component
 @RequiredArgsConstructor

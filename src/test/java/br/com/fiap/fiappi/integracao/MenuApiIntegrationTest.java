@@ -1,5 +1,7 @@
 package br.com.fiap.fiappi.integracao;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import java.io.File;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -33,9 +35,6 @@ import br.com.fiap.fiappi.adapter.database.jpa.user.entity.User;
 import br.com.fiap.fiappi.core.menu.dto.MenuDTO;
 import br.com.fiap.fiappi.core.user.enums.RoleName;
 import jakarta.transaction.Transactional;
-import static org.hamcrest.CoreMatchers.is;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest

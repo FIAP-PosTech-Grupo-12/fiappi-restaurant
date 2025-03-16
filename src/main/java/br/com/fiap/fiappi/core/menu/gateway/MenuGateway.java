@@ -1,11 +1,10 @@
 package br.com.fiap.fiappi.core.menu.gateway;
 
-import br.com.fiap.fiappi.core.menu.domain.Menu;
-import br.com.fiap.fiappi.core.menu.dto.MenuDTO;
-
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+
+import br.com.fiap.fiappi.core.menu.domain.Menu;
+import br.com.fiap.fiappi.core.menu.dto.MenuDTO;
 
 public interface MenuGateway {
     void create(Menu menu);
