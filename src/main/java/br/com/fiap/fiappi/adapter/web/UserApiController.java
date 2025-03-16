@@ -29,7 +29,7 @@ public class UserApiController {
     }
 
     @GetMapping
-    public ResponseEntity<List<UserProjection>> listUsers(@RequestParam Integer page, @RequestParam Integer size) {
+    public ResponseEntity<List<UserProjection>> listUsers(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "10") Integer size) {
         return ResponseEntity.ok(userController.findAll(page, size));
     }
 
