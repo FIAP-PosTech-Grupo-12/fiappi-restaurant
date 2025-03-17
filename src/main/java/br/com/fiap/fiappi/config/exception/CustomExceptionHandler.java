@@ -4,6 +4,7 @@ import br.com.fiap.fiappi.config.security.exception.UserNotFoundException;
 import br.com.fiap.fiappi.core.menu.exception.ImageConverterException;
 import br.com.fiap.fiappi.core.menu.exception.MenuConverterException;
 import br.com.fiap.fiappi.core.menu.exception.MenuNotFoundException;
+import br.com.fiap.fiappi.core.menu.exception.ValidationMenuException;
 import br.com.fiap.fiappi.core.restaurant.exception.RestaurantNotFoundException;
 import br.com.fiap.fiappi.core.user.exception.UserLoginAlreadyExistsException;
 import org.springframework.http.HttpHeaders;
@@ -57,6 +58,13 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
         String bodyOfResponse = ex.getMessage();
         return handleExceptionInternal(ex, bodyOfResponse,
                 new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, request);
+    }
+
+    @ExceptionHandler(ValidationMenuException.class)
+    public ResponseEntity<Object> handlerValidationMenuException(RuntimeException ex, WebRequest request){
+        String bodyOfResponse = ex.getMessage();
+        return handleExceptionInternal(ex, bodyOfResponse,
+                new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
     }
 
 }
